@@ -41,4 +41,24 @@
   $ Get-Command Promt
   $ (Get-Command Prompt).ScriptBlock # ScriptBlock
 
+
+
+```
+
+## Prompt Example
+
+`/Users/<whoami>/.config/powershell/Microsoft.Powershell_profile.ps1`
+
+```ps
+  function prompt {
+    # $color = Get-Random -Min 1 -Max 16
+    Write-Host "[ " -NoNewline
+    Write-Host $(Get-Date -Format "dddd yyyy-MM-dd HH:mm") -NoNewline -ForegroundColor 1
+    Write-Host " " -NoNewline
+    Write-Host $(Get-Location) -ForegroundColor 13 -NoNewline
+    Write-Host " ]"
+    Write-Host ($(Split-Path -Path (Get-Location) -Leaf) + " $") -NoNewline -ForegroundColor 2
+    return " "
+}
+
 ```
