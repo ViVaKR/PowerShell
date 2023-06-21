@@ -1,8 +1,9 @@
 # PowerShell
 
-## [Installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3) 
+## [Installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3)
 
 ## Paths (MacOS)
+
 * $PSHOME is `/usr/local/microsoft/powershell/<version number>/`
 * User profiles are read from `~/.config/powershell/profile.ps1`
 * Default profiles are read from `$PSHOME/profile.ps1`
@@ -13,9 +14,9 @@
 
 ## PROFILE
 
-- [MS Document](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3)
-- The $PSHOME variable stores the installation directory for PowerShell
-- The $HOME variable stores the current user's home directory
+* [MS Document](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3)
+* The $PSHOME variable stores the installation directory for PowerShell
+* The $HOME variable stores the current user's home directory
 
 * All Users, All Hosts
   * Windows - $PSHOME\Profile.ps1
@@ -34,22 +35,18 @@
   * Linux - ~/.config/powershell/Microsoft.Powershell_profile.ps1
   * macOS - ~/.config/powershell/Microsoft.Powershell_profile.ps1
 
-
 ## Prompt
 
 ```bash
-  $ Get-Command Promt
-  $ (Get-Command Prompt).ScriptBlock # ScriptBlock
-
-
-
+  Get-Command Promt
+  (Get-Command Prompt).ScriptBlock # ScriptBlock
 ```
 
 ## Prompt Example
 
 `/Users/<whoami>/.config/powershell/Microsoft.Powershell_profile.ps1`
 
-```ps
+```bash
   function prompt {
     # $color = Get-Random -Min 1 -Max 16
     Write-Host "[ " -NoNewline
@@ -60,5 +57,13 @@
     Write-Host ($(Split-Path -Path (Get-Location) -Leaf) + " $") -NoNewline -ForegroundColor 2
     return " "
 }
+
+```
+
+## ETC Commands
+
+```bash
+ New-Item .gitignore
+ ni .gitignore
 
 ```
