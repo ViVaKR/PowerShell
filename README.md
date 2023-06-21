@@ -154,11 +154,19 @@ pwsh
 
 ## `Get-Command`
 
-	- 
+```bash
+
+Get-Process | Sort-Object -Descending -Property Name, CPU
+
+Get-Process 'some process' | Sort-Object -Property @{Expression = "Name"; Descending = $True}, @{Expression = "CPU"; Descending = $False}
+
+# Where-Object Sort-Object
+Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Object -First 3
+```
 
 
 
-
+---
 
 ## `Prompt`
 
