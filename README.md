@@ -1,5 +1,6 @@
 <!-- markdownlint-disable MD012 -->
 <!-- markdownlint-disable MD046 -->
+<!-- markdownlint-disable MD022 -->
 
 # PowerShell
 
@@ -34,7 +35,7 @@
   - 함수
   - 스크립트 또는 별칭
 
-```bash
+```ps1
 Get-Command -Verb Get -Noun a-noun*
 ```
 
@@ -115,7 +116,7 @@ pwsh
 
 ## [Installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3)
 
-## Paths (MacOS)
+## Profile.ps1 Paths (MacOS)
 
 - $PSHOME is `/usr/local/microsoft/powershell/<version number>/`
 - User profiles are read from `~/.config/powershell/profile.ps1`
@@ -128,31 +129,83 @@ pwsh
 ## PROFILE
 
 - [MS Document](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3)
-- The $PSHOME variable stores the installation directory for PowerShell
-- The $HOME variable stores the current user's home directory
+- The `$PSHOME` : Installation directory for PowerShell
+- The `$HOME` : Current user's home directory
 
-- All Users, All Hosts
+## `$PROFILE | Get-Member -Type NoteProperty`
+
+- 모든 사용자, 모든 호스트 `All Users, All Hosts`
+  - $PROFILE.AllUsersAllHosts
   - Windows - $PSHOME\Profile.ps1
   - Linux - /usr/local/microsoft/powershell/7/profile.ps1
   - macOS - /usr/local/microsoft/powershell/7/profile.ps1
-- All Users, Current Host
+- 모든 사용자, 현재 호스트 `All Users, Current Host`
+  - $PROFILE.AllUsersCurrentHost
   - Windows - $PSHOME\Microsoft.PowerShell_profile.ps1
   - Linux - /usr/local/microsoft/powershell/7/Microsoft.Powershell_profile.ps1
   - macOS - /usr/local/microsoft/powershell/7/Microsoft.Powershell_profile.ps1
-- Current User, All Hosts
+- 현재 사용자, 모든 호스트 `Current User, All Hosts`
   - Windows - $HOME\Documents\PowerShell\Profile.ps1
   - Linux - ~/.config/powershell/profile.ps1
   - macOS - ~/.config/powershell/profile.ps1
-- Current user, Current Host
-  - Windows - $HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1
+- 현재 사용자, 현재 호스트 `Current user, Current Host`
+  - `$PROFILE.CurrentUserCurrentHost`
+  - Windows - $HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 `$PROFILE`
   - Linux - ~/.config/powershell/Microsoft.Powershell_profile.ps1
   - macOS - ~/.config/powershell/Microsoft.Powershell_profile.ps1
+
+- 프로필 파일 여부 확인
+
+```ps1
+	Test-Path -Path $PROFILE.AllUsersAllHosts
+
+	if(!(Test-Path -Path <profile-name>)) {
+		New-Item -ItemType File -Path <profile-name> -Force
+	}
+
+	# 프로필 편집
+	code $PROFILe							# D:\Documents\PowerShell\Microsoft.VSCode_profile.ps1
+	code $PROFILE.AllUsersAllHosts			# C:\Program Files\PowerShell\7\profile.ps1
+	code $PROFILE.CurrentUserAllHosts		# D:\Documents\PowerShell\profile.ps1
+	code $PROFILE.AllUsersCurrentHost		# C:\Program Files\PowerShell\7\Microsoft.VSCode_profile.ps1
+	code $PROFILE.CurrentUserCurrentHost	# D:\Documents\PowerShell\Microsoft.VSCode_profile.ps1
+
+	# NoProfile
+	pwsh -NoProfile
+
+	# 매개 변수 전체 목록
+	pwsh -?
+
+	# 세션에서 프로필을 실행
+	Invoke-Command -Session $s -FilePath $PROFILE
+
+```
 
 ## `$PSVersionTable`
 
 ## `Get-Verb`
 
 ## `Get-Command`
+
+## `Set-ExcutionPolicy -ExcutionPolicy <Policy Name>`
+	- AllSigned
+	- Bypass
+	- Default
+	- RemoteSigned
+	- Restricted
+	- Undefined
+	- Unrestricted
+
+## Trusted Repository In PowerShell
+
+```ps1
+ 	
+	Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+ 	Unregister-PSRepository -Name "PSGallery"
+	
+	# 확인
+	Get-PSRepository
+```
 
 ```bash
 
@@ -164,6 +217,16 @@ Get-Process 'some process' | Sort-Object -Property @{Expression = "Name"; Descen
 Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Object -First 3
 ```
 
+## Intellisense
+
+```ps1
+ Install-Module -Name PSReadLine -Repository PSGallery -Force
+ Get-PSReadLineOption | Select-Object -Property Predictionsource
+
+ # 키바인딩 변경
+ Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord
+ Set-PSReadLineKeyHandler -Chord "RightArrow" -Function ForwardWord
+```
 
 
 ---
@@ -195,8 +258,29 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 
 ## ETC Commands
 
-```bash
- New-Item .gitignore
- ni .gitignore
+```ps1
+ 	New-Item .gitignore
+ 	ni .gitignore
 
+	# 환경변수
+	$Env:<variable-name>
+	$Env:windir
+	$PSHOME
+	$Env:PATH
+	$Env:PATHEXT # 윈도우에서 실행파일로 간주하는 파일 확장명
+	$Env:TERM
+	$Env:<variable-name> = "<new-value>" # new or update
+	$Env:Foo = "An Example" #new
+	$Env:Foo = '' # remove
+	New-Item -Path Env:\Foo -Value 'Bar'
+	Remove-Item -Path Env:\Foo* -Verbose
+
+
+	# 환경변수 영구 저장 방법 3가지
+	#-1. 프로필에 저장
+	$PROFILE # 프로필 경로 가져오기
+	#-2. SetEnvironmentVariable 메서드 사용
+	[Environment]::SetEnvironmentVariable('Foo', 'Bar', 'Machine')
+	[Environment]::SetEnvironmentVariable('Foo','', Machine)
+	#-3. 시스템 제어판 사용
 ```
