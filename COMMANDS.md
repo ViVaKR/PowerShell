@@ -1,6 +1,6 @@
 # COMMANDS
 
-## Commands
+## Commands : `Get-Command`
 
 | CommandType    | Name                                              | Version   | Source |
 | -----------    | ----                                              | -------   | ------ |

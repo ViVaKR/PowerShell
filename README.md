@@ -275,7 +275,6 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 	New-Item -Path Env:\Foo -Value 'Bar'
 	Remove-Item -Path Env:\Foo* -Verbose
 
-
 	# 환경변수 영구 저장 방법 3가지
 	#-1. 프로필에 저장
 	$PROFILE # 프로필 경로 가져오기
@@ -283,4 +282,7 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 	[Environment]::SetEnvironmentVariable('Foo', 'Bar', 'Machine')
 	[Environment]::SetEnvironmentVariable('Foo','', Machine)
 	#-3. 시스템 제어판 사용
+
+	# Where-Object
+	Get-ChildItem -Path $HOME -Recurse | Where-Object {$_.Length -gt 20MB} | Measure-Object
 ```

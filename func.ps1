@@ -10,3 +10,8 @@ function Get-PowerShellProcess {
 }
 
 Get-PowerShellProcess
+
+Get-Process notepad | Format-Table
+Get-Process notepad | Format-List
+
+
