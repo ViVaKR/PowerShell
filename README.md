@@ -11,9 +11,10 @@
   - 명령 일괄 처리를 실행할 수 있음으로 작업 자동화에 적합함
   - 클라우드 리소스 및 기타 리소스와 상호 작용 가능
   - 스크립트 를 텍스트 파일에 저장하고 소스 제어 시스템을 사용할 수 있음
-- 스크립팅 언어 두 부분으로 구성됨
+- 스크립팅 언어
 - 관리작업을 자동화 하기 위한 프레임워크
 - 플랫폼 간의 도구로 발전
+- 클라우드 관리
 
 ## 기능
 
@@ -36,85 +37,110 @@
   - 스크립트 또는 별칭
 
 ```ps1
-Get-Command -Verb Get -Noun a-noun*
+	Get-Command -Verb Get -Noun a-noun*
 ```
 
-## 도움말
+## cmdlet (command-lets) : PowerShell 명령
+- 네이티브 PowerShell 명령
+- 컴파일된 .NET, PowerShell 스크립팅 언어에서 사용됨
+- 
+
+## 도움말 : `Get-Help`
 
 ```ps1
-Update-Help -UICulture en-US -Verbose
-Update-Help -UICulture ko-KR -Verbose
-Get-Help -Name Get-Help
+	Update-Help -UICulture en-US -Verbose
+	Update-Help -UICulture ko-KR -Verbose
+	Get-Help -Name Get-Help -Full # 전체 도움말 항목 (-Detailed, Examples, Online, Parameter Noun, ShowWindows)
+	help Get-Command -Full | Out-GridView # 별도의 창에 도움말 표시 (권장)
+	help *process*
 ```
 
-## Get-Help
+## Get-Command
 
-- NAME : 명령의 이름
-- SYNTAZ : 플래그의 조합과 간혹 허용되는 매개 변수를 사용하여 명령을 호출하는 방법을 보여줌
-- ALIASES: 명령의 별칭이 있으면 나열됩니다. 별칭은 명령의 다른 이름이며 명령을 호출하는 데 사용할 수 있습니다.
-- REMARKS: 이 명령에 대한 자세한 도움말을 가져오기 위해 실행할 명령에 관한 정보를 제공합니다.
-- PARAMETERS: 매개 변수의 세부 정보를 제공합니다. 해당하는 경우 형식, 더 긴 설명 및 허용되는 값을 나열합니다.
-
-- Full: 자세한 도움말 페이지를 반환합니다. 표준 응답에서 가져오지 않는 매개 변수, 입력 및 출력과 같은 정보를 지정합니다.
-- Detailed: 표준 응답과 유사하지만 매개 변수에 해당하는 섹션을 포함하는 응답을 반환합니다.
-- Examples: 예제(있는 경우)만 반환합니다.
-- Online: 명령의 웹 페이지를 엽니다.
-- Parameter: 매개 변수 이름을 인수로 요구합니다. 이 플래그는 특정 매개 변수의 속성을 나열합니다.
+- 이름으로 필터링 : `Get-Command -Name Get-Process`
+- 동사로 필터링 : `Get-Command -Verb 'Get'`
+- 명사로 필터링 : `Get-Commnad -Noun U*
+- 매개변수 결합 필터링 : Get-Command -Verb Get -Noun U*
+- Select-Object 필터링 : `Get-Command | Select-Object -First 5 -Property Name, Source`
+- Where-Object 필터링 : `Get-Process | Where-Object {$_.ProcessName -like "n*"}`
+- Get-Member : 명령에 사용할 수 있는 개체, 속성 및 메서드 를 검색
+  - `Get-Process | Get-Member -MemberType Method`
+  - `Get-Process | Get-Member | Select-Object Name, Definition`
+- `Get-Command -ParameterType Process`
 
 ```ps1
-Get-Help Get-FileHash -Examples
-help Get-FileHash -Examples
+	Get-Command -Name *service* -CommandType Cmdlet, Function, Alias
+	Get-Help Get-FileHash -Examples
+	help Get-FileHash -Examples
 
-Get-FileHash /etc/apt/sources.list | Format-List
-Get-FileHash .\Workspace.zip | Format-List
+	Get-FileHash /etc/apt/sources.list | Format-List
+	Get-FileHash .\Workspace.zip | Format-List
 
-# 개체검색
-Get-Process -Name 'name-of-process' | Get-Member
-Get-Command -ParameterType Process
-Get-Process -Name 'notepad' | Get-Member | Select-Object Name, MemberType
-Get-Process | Get-Member
+	# 개체검색
+	Get-Process -Name 'name-of-process' | Get-Member
+	Get-Command -ParameterType Process
+	Get-Process -Name 'notepad' | Get-Member | Select-Object Name, MemberType
+	Get-Process | Get-Member
 
-# Select-Object를 사용하고 고유한 속성 목록을 선택하여 기본 뷰를 재정의할 수 있습니다. 
-그런 다음 이러한 속성을 Format-Table 또는 Format-List로 보내 원하는 대로 테이블을 표시할 수 있습니다.
+	# Select-Object를 사용하고 고유한 속성 목록을 선택하여 기본 뷰를 재정의할 수 있습니다. 
+	그런 다음 이러한 속성을 Format-Table 또는 Format-List로 보내 원하는 대로 테이블을 표시할 수 있습니다.
 
-Get-Process zsh | Format-List -Property *
-Get-Process zsh | Get-Member -Name C*
-Get-Process zsh | Select-Object -Property Id, Name, CPU
+	Get-Process zsh | Format-List -Property *
+	Get-Process zsh | Get-Member -Name C*
+	Get-Process zsh | Select-Object -Property Id, Name, CPU
 
-## ssh
-New-PSSession
-(Get-Command New-PSSession).ParameterSets.Name
-#- SSHHost
-#- SSHHostHashParam
+	## ssh
+	New-PSSession
+	(Get-Command New-PSSession).ParameterSets.Name
+	#- SSHHost
+	#- SSHHostHashParam
+
+	# 모든 속성
+	Get-Service -Name w32time | Select-Object -Property *
+
+	# 메서드 결과범위
+	Get-Service -Name w32time | Get-Member -MemberType Method
+	# 메서드 사용
+	(Get-Servivce -Name w32time).Stop()
+	# 서비스 중지
+	Get-Service -Name w32time
+	# 서비스 시작
+	Get-Service -Name w32time | Start-Service -PassThru
+
+	# oneline
+	$Srv = 'w32time'; Get-Service -Name $Srv
+
+	# Where-Object
+	Get-Service | Where-Object Name -eq w32time
 ```
-
----
 
 ## [Install PowerShell On Ubuntu](https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.3)
 
 ```bash
-# Update the list of packages
-sudo apt-get update
-# Install pre-requisite packages.
-sudo apt-get install -y wget apt-transport-https software-properties-common
-# Download the Microsoft repository GPG keys
-wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
-# Register the Microsoft repository GPG keys
-sudo dpkg -i packages-microsoft-prod.deb
-# Delete the the Microsoft repository GPG keys file
-rm packages-microsoft-prod.deb
-# Update the list of packages after we added packages.microsoft.com
-sudo apt-get update
-# Install PowerShell
-sudo apt-get install -y powershell
-# Start PowerShell
-pwsh
+	# Update the list of packages
+	sudo apt-get update
+	# Install pre-requisite packages.
+	sudo apt-get install -y wget apt-transport-https software-properties-common
+	# Download the Microsoft repository GPG keys
+	wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
+	# Register the Microsoft repository GPG keys
+	sudo dpkg -i packages-microsoft-prod.deb
+	# Delete the the Microsoft repository GPG keys file
+	rm packages-microsoft-prod.deb
+	# Update the list of packages after we added packages.microsoft.com
+	sudo apt-get update
+	# Install PowerShell
+	sudo apt-get install -y powershell
+	# Start PowerShell
+	pwsh
 ```
 
 ## Uninstall PowerShell On Ubuntu : `sudo apt-get remove powershell`
 
 
 ## [Installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3)
+
+## Install PowerShell on Windows : `dotnet tool install --global PowerShell`
 
 ## Profile.ps1 Paths (MacOS)
 
@@ -125,6 +151,10 @@ pwsh
 - Shared modules are read from `/usr/local/share/powershell/Modules`
 - Default modules are read from `$PSHOME/Modules`
 - PSReadLine history are recorded to `~/.local/share/powershell/PSReadLine/ConsoleHost_history.txt`
+
+## 현재 실행 정책 확인 : `Get-ExecutionPolicy`
+
+## 원격서명 실행 정책 : `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
 ## PROFILE
 
