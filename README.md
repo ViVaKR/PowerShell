@@ -315,4 +315,104 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 
 	# Where-Object
 	Get-ChildItem -Path $HOME -Recurse | Where-Object {$_.Length -gt 20MB} | Measure-Object
+
+	# Alias
+	Get-Alias -Definition Get-Service # 명령의 별칭
+
+	# Windows 논리드라이브, 공급자 드라디브, 네트워크 공유 드라이브
+	Get-PSDrive
+
+	Get-PSProvider
+
+	Get-ChildItem -Path Cert:\LocalMachine\CA
+
+	#Show MarkDown
+	Show-MarkDown -Path E:\1_GitProjects\PowerShell\README.md -UseBrowser
 ```
+
+## 비교 연산자
+
+| 연산자 | 정의 |
+| --- | ---- |
+| -eq | 같음 |
+| -ne | 같지 않음 |
+| -gt | 초과 |
+| -ge | 크거나 같음 |
+| -Like | * 와일드카드 문자를 사용하여 일치 |
+| -NotLike | * 와일드카드 문자를 사용하여 일치하지 않음 |
+| -Match | 지정된 정규식과 일치 |
+| -NotMatch | 지정된 정규식과 일치하지 않음 |
+| -Contains | 컬렉션에 지정된 값이 포함되는지 확인 |
+| -NotContains | 컬렉션에 특정 값이 포함되지 않는지 확인 |
+| -In | 컬렉션에 지정된 값이 있는지 확인 |
+| -NotIn | 컬렉션에 지정된 값이 없는지 확인 |
+| -Replace | 지정된 값을 대체 |
+
+---
+
+```ps1
+	"Hello" -ceq "hello" # False
+	"Hello" -eq "hello" # True
+	5 -ge 5 # True
+	'PowerShell' -like '*shell' # True
+	'PowerShell' -match '^*.shell$' # True
+
+	$Numbers = 1..10 # Set 1 ~10
+		$Numbers -contains 15 # False
+		$Numbers -Notcontains 15 # True
+		7 -in $Numbers
+		23 -NotIn $Numbers
+		'PowerShell' -replace 'Shell' # Power
+		'SQL Saturday - Baton Rouge' -Replace 'Saturday', 'Sat' # 대소문자 구분하지 않음
+		'SQL Saturday - Baton Rouge'.Replace('saturday', 'Sat') # 대소문자 구분
+
+```
+
+
+## WMI (Windows Management Instrumentation) : CIM cmdlet 대체 사용을 권장, PowerShell 5.1
+
+## CIM (Common Information Model)
+
+	- `Get-Command -Module CimCmdlets`
+	- WMI에 엑세스 하는 용도
+	- `Get-CimInstance -Query 'Select * from Win32_BIOS'`
+	- `Get-CimInstance -ClassName Win32_BIOS`
+	- `Get-CimInstance -ClassName Win32_BIOS | Select-Object -Property SerialNumber`
+	- `Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber | Select-Object -Property SerialNumber`
+	- `(Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber).SerialNumber`
+	- `$CimSession = New-CimSession -ComputerName Viv -Credential (Get-Credential)`
+    	- `Get-CimInstance -CimSession $CimSession -ClassName Win32_BIOS`
+	- Get-Service -Name WinRM | Start-Service
+    	- Test-WSMan -ComputerName ViV
+  	- `Get-CimSession` : CimSessions 가 현재 연결되어 있는 대상과 사용중인 프로토콜을 확인하는 용도로 사용
+```ps1
+	$DCOM = New-CimSessionOption -Protocol Dcom
+	$Cred = Get-Credential
+	$CimSession = New-CimSession -Computer ViV -SessionOption $DCOM -Credential $Cred
+	Get-CimInstance -CimSession $CimSession -ClassName Win32_BIOS
+```
+
+## `Get-Command -ParameterName ComputerName` : ComputerName 매개변수가 있는 명령을 확인함
+
+## `Enable-PSRemoting` : 원격 컴퓨터에서 PoweShell 원격기능 사용 설정 (원격명령 사용 목적)
+
+## 일대일 원격작업 `Enter-PSSession`
+
+```ps1
+	$Cred = Get-Credential
+	Enter-PSSession -ComputerName Viv -Credential $Cred
+```
+
+## 일대다 원격작업
+
+```ps1
+	# 하나 이상의 원격 컴퓨터 를 대상으로 동시에 명령을 실행하기
+	Invoke-Command -ComputerName c01, c02, c03 { Get-Service -Name W32time } -Credential $Cred
+```
+
+## 함수
+
+## 고급함수
+
+- `CmdletBinding` 추가
+- 공통매개 변수 자동포함 : Verbose, Debug
