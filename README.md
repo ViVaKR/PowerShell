@@ -24,7 +24,7 @@
 ## 기존 명령줄 셸과의 차이점
 
 - 파워셸에서는 개체를 입력 및 출력으로 사용하므로 서식 지정 및 추출에 소요시간을 줄일 수 있음
-- *cmdlet* (command let) : 컴파일된 명령
+- *Cmdlet* (command let) : 컴파일된 명령
   - .NET, .NET Core 에서 개발되어 파워셸 내에서 명령을 호출함
   - 명명표준 : `동사-명사`  $\rightarrow$ `Get-Verb`
   - 별도의 실행 파일이 아닌 공용 런타임에 빌드되어 매개변수 구문 분석 및 파이프 라인 동작에서 일관된 환경을 제공함
@@ -142,28 +142,20 @@
 
 ## Install PowerShell on Windows : `dotnet tool install --global PowerShell`
 
-## Profile.ps1 Paths (MacOS)
-
-- $PSHOME is `/usr/local/microsoft/powershell/<version number>/`
-- User profiles are read from `~/.config/powershell/profile.ps1`
-- Default profiles are read from `$PSHOME/profile.ps1`
-- User modules are read from `~/.local/share/powershell/Modules`
-- Shared modules are read from `/usr/local/share/powershell/Modules`
-- Default modules are read from `$PSHOME/Modules`
-- PSReadLine history are recorded to `~/.local/share/powershell/PSReadLine/ConsoleHost_history.txt`
-
 ## 현재 실행 정책 확인 : `Get-ExecutionPolicy`
 
 ## 원격서명 실행 정책 : `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 
 ## PROFILE
 
-- [MS Document](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3)
+- [문서](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_profiles?view=powershell-7.3)
+- 파워셀이 시작될 때 실행되는 스크립트
+- 별칭, 함수 및 변수 추가
+- PowerShell Dirve 만들기
+- 임의의 명령 실행
+- 기본설정 변경
 - The `$PSHOME` : Installation directory for PowerShell
 - The `$HOME` : Current user's home directory
-
-## `$PROFILE | Get-Member -Type NoteProperty`
-
 - 모든 사용자, 모든 호스트 `All Users, All Hosts`
   - $PROFILE.AllUsersAllHosts
   - Windows - $PSHOME\Profile.ps1
@@ -183,8 +175,6 @@
   - Windows - $HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 `$PROFILE`
   - Linux - ~/.config/powershell/Microsoft.Powershell_profile.ps1
   - macOS - ~/.config/powershell/Microsoft.Powershell_profile.ps1
-
-- 프로필 파일 여부 확인
 
 ```ps1
 	Test-Path -Path $PROFILE.AllUsersAllHosts
@@ -328,6 +318,8 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 
 	#Show MarkDown
 	Show-MarkDown -Path E:\1_GitProjects\PowerShell\README.md -UseBrowser
+
+	Invoke-Item https://vivabm.com
 ```
 
 ## 비교 연산자
@@ -367,7 +359,6 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 		'SQL Saturday - Baton Rouge'.Replace('saturday', 'Sat') # 대소문자 구분
 
 ```
-
 
 ## WMI (Windows Management Instrumentation) : CIM cmdlet 대체 사용을 권장, PowerShell 5.1
 
@@ -416,3 +407,39 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 
 - `CmdletBinding` 추가
 - 공통매개 변수 자동포함 : Verbose, Debug
+
+
+## 동사 (Verb)
+
+
+## Alias
+
+```ps1
+	Get-Alias -Definition Get-ChildItem
+	Get-Alias -Name gci
+```
+
+- 호환성 별칭
+- 스크립트에서는 별칭 사용 안함
+
+| cmd.exe | UNIX | PowerShell Cmdlet | PowerShell Alias |
+| --- | --- | --- | ---|
+| cd, chdir | cd | Set-Location | sl, cd, chdir |
+
+
+## 키바인딩 
+
+```ps1
+	Get-PSReadLineKeyHandler
+	Get-PSReadLineKeyHandler -Unbound
+	Set-PSReadLineKeyHandler -Chord 'Ctrl+Spacebar' -Function MenuComplete
+
+	# 키이름 및 코드 바인딩
+	[System.Console]::ReadKey()
+	[System.Console]::ReadLine()
+
+```
+
+## 배열
+
+* `@()` 을 이용하여 빈 배열을 만듬
