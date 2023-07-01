@@ -443,3 +443,5 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 ## 배열
 
 * `@()` 을 이용하여 빈 배열을 만듬
+
+
