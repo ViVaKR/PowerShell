@@ -5,15 +5,12 @@ namespace PsProj;
 
 public class Pwsh
 {
-
-
 	public static void Get_PSDrive(string command)
 	{
 		var ps = PowerShell.Create();
 		ps.AddCommand(command);
 		Print(ps.Invoke());
 	}
-
 
 	public static void Foreach_Object(string command)
 	{
