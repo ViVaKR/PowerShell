@@ -444,4 +444,63 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 
 * `@()` 을 이용하여 빈 배열을 만듬
 
+## 자동변수
 
+`$$` : 세션에서 받은 마지막 줄의 마지막 토큰을 포함
+`$?` : 마지막 명령의 실행 상태 포함 True, False
+`$^` : 세션에서 받은 마지막줄의 첫번째 토큰
+`$_` : $PSItem 과 동일, 파이프 라인의 모든 개체에 대해 작업을 수행하는 명령에서 이 변수를 사용할 수 있음.
+`$args` : 
+`$Error` : 
+`$Event` : 처리중인 이벤트를 나타내는 PSEventArgs 개체를 포함
+`$EventArgs` : 
+`$ExecutionContext` : 
+`$false`
+`$foreach`
+`$HOME`
+`$input`
+`$IsCoreCLR` : 현재 세션이 .NET Core 런타임(CoreCLR)에서 실행되고 있는지 여부
+`$IsLinux`
+`$IsMacOS`
+`$IsWindows`
+`$LASTEXITCODE` : 종료코드 (0: 성공적으로 완료, 1 : 예외 종류)
+`$Matches` : 
+`$MyInvocation`
+`$NestedPromptLevel`
+`$null` :
+`$PID` :
+`$PROFILE` : Test-Path $PROFILE
+`$PSBoundParameters` : 전달된 매개 변수, key-value
+`$PSCmdlet`
+`$PSCommandPath` : 실행중인 스크립의 전체 경로 및 파일 이름 포함
+`PSCulture`
+`$PSEdition`
+`$PSHOME`
+`$PSItem`
+`$PSScriptRoot`
+`$PSSenderInfo`
+`$PSUICulture`
+`$PSVersionTable`
+`$PWD`
+`$Sender`
+`$StackTrace`
+`$Switch`
+`$this` : Get-ChildItem .\README.md | Get-Member BaseName | Format-List
+`$true`
+
+## Built-in Functions
+
+`cd..`
+`cd\`
+`Pause` : 일시중지
+`promt` : 기본 프롬프트 함수, 재정의 하여 사용자 지정가능
+`clear-host`
+`oss`
+`mkdir`
+
+## 윈도우 드라이브 문자함수
+
+## Format-Custom
+
+- 클래스 정의와 유사한 형식으로 개체의 사용자 지정 보기 제공
+`Get-Date | Format-Custom @{expr={$_.Date};depth=1},TimeOfDay`
