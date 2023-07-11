@@ -43,8 +43,6 @@ public class Pwsh
 		}
 	}
 
-
-
 	/// <summary>
 	/// Print
 	/// </summary>

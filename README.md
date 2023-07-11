@@ -504,3 +504,38 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 
 - 클래스 정의와 유사한 형식으로 개체의 사용자 지정 보기 제공
 `Get-Date | Format-Custom @{expr={$_.Date};depth=1},TimeOfDay`
+
+
+## dir -rec
+
+## Default App Remove
+
+```ps1
+dir -rec
+
+Get-AppxPackage -AllUsers | where-object {$_.PackageFullName -eq ""} |  Remove-AppxPackage -AllUsers  
+Remove-Item: Access to the path 'C:\Program Files\WindowsApps\' is denied.
+cd "C:\Program Files\windowsapps"
+takeown /F Microsoft.Minecraft* /r /d y
+
+```
+
+## Remove-Item c:\Tmp\* -Recurse -Force
+
+```ps1
+	Get-AppxPackage -AllUsers | where-object {$_.name -eq "LGElectronics.LGChatbot"} |  Remove-AppxPackage -AllUsers
+```
+
+## VSCode Start with Changed Extensions 
+`"C:\Users\Viv\AppData\Local\Programs\Microsoft VS Code\Code.exe" --extensions-dir="E:\Microsoft VS Code\extensions"`
+
+
+## 윈도우 시스템 확인
+
+```ps1
+	systeminfo 
+	Get-WmiObject -Class win32_OperatingSystem | % Caption
+	wmic os get osarchitecture
+	wmic cpu get datawidth
+	[Environment]::Is64BitOperatingSystem
+```
