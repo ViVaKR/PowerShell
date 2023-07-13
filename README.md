@@ -342,6 +342,36 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 
 ---
 
+[ 등호 ]
+-eq , -ieq , -ceq - 같음  
+-ne , -ine , -cne - 같지 않음  
+-gt , -igt , -cgt - 보다 큼  
+-ge , -ige , -cge - 보다 크거나 같음  
+-lt , -ilt , -clt - 보다 작음  
+-le , -ile , -cle - 작거나 같음  
+
+[ Matching ]
+-like , -ilike , -clike - 문자열이 와일드카드 패턴과 일치합니다.  
+-notlike , -inotlike , -cnotlike - 문자열이 와일드카드 패턴과 일치하지 않음  
+-match , -imatch , -cmatch - 문자열이 정규식 패턴과 일치합니다.  
+-notmatch , -inotmatch , -cnotmatch - 문자열이 정규식 패턴과 일치하지 않음  
+
+[ 대체 ]  
+-replace , -ireplace , -creplace - 정규식 패턴과 일치하는 문자열을 대체합니다.  
+
+[ Containment ]  
+-contains , -icontains , -ccontains - 컬렉션에 값이 포함됩니다.  
+-notcontains , -inotcontains , -cnotcontains - 컬렉션에 값이 없습니다.  
+-in - 컬렉션에 값이 있습니다.  
+-notin - 컬렉션에 값이 없습니다.  
+
+[ 타입비교 ]
+-is - 두 개체 모두 동일한 형식입니다.  
+-isnot - 개체가 동일한 형식이 아닙니다.  
+
+---
+
+
 ```ps1
 	"Hello" -ceq "hello" # False
 	"Hello" -eq "hello" # True
