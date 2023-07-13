@@ -74,7 +74,7 @@ Test        t           Diagnostic     Verifies the operation or consistency of 
 Trace       tr          Diagnostic     Tracks the activities of a resource
 Approve     ap          Lifecycle      Confirms or agrees to the status of a resource or process
 Assert      as          Lifecycle      Affirms the state of a resource
-Build       bd          Lifecycle      Creates an artifact (usually a binary or document) out of some set of input files (usually source code or de…
+Build       bd          Lifecycle      Creates an artifact
 Complete    cmp         Lifecycle      Concludes an operation
 Confirm     cn          Lifecycle      Acknowledges, verifies, or validates the state of a resource or process
 Deny        dn          Lifecycle      Refuses, objects, blocks, or opposes the state of a resource or process

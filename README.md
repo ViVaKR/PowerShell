@@ -350,7 +350,7 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 -lt , -ilt , -clt - 보다 작음  
 -le , -ile , -cle - 작거나 같음  
 
-[ Matching ]
+[ Matching ]  
 -like , -ilike , -clike - 문자열이 와일드카드 패턴과 일치합니다.  
 -notlike , -inotlike , -cnotlike - 문자열이 와일드카드 패턴과 일치하지 않음  
 -match , -imatch , -cmatch - 문자열이 정규식 패턴과 일치합니다.  
@@ -370,7 +370,6 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 -isnot - 개체가 동일한 형식이 아닙니다.  
 
 ---
-
 
 ```ps1
 	"Hello" -ceq "hello" # False
@@ -535,11 +534,6 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 - 클래스 정의와 유사한 형식으로 개체의 사용자 지정 보기 제공
 `Get-Date | Format-Custom @{expr={$_.Date};depth=1},TimeOfDay`
 
-
-## dir -rec
-
-## Default App Remove
-
 ```ps1
 dir -rec
 
@@ -550,8 +544,6 @@ takeown /F Microsoft.Minecraft* /r /d y
 
 ```
 
-## Remove-Item c:\Tmp\* -Recurse -Force
-
 ```ps1
 	Get-AppxPackage -AllUsers | where-object {$_.name -eq "LGElectronics.LGChatbot"} |  Remove-AppxPackage -AllUsers
 ```
@@ -560,12 +552,17 @@ takeown /F Microsoft.Minecraft* /r /d y
 `"C:\Users\Viv\AppData\Local\Programs\Microsoft VS Code\Code.exe" --extensions-dir="E:\Microsoft VS Code\extensions"`
 
 
-## 윈도우 시스템 확인
-
 ```ps1
+	# 윈도우 시스템 확인
 	systeminfo 
 	Get-WmiObject -Class win32_OperatingSystem | % Caption
 	wmic os get osarchitecture
 	wmic cpu get datawidth
 	[Environment]::Is64BitOperatingSystem
+
+	# 별칭 만들기
+	Set-Alias -Name ll -Value Get-ChildItem
+
+	# 삭제
+	Remove-Item c:\Tmp\* -Recurse -Force
 ```
