@@ -1,4 +1,4 @@
-﻿// 디펜더 완전삭제 (효과 만점)
+﻿// 디펜더 완전삭제
 # Dism /online /Disable-Feature /FeatureName:Windows-Defender /Remove /NoRestart /quiet
 
 // Check the Windows Defender Configuration and Settings:	

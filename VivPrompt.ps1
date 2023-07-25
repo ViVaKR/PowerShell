@@ -5,7 +5,6 @@
 $PwshProfileFolder = (Split-Path -Parent $Profile.CurrentUserAllHosts)
 
 #! Alias `go, ntc, vping, dnsname`
-Set-Alias -Name go Set-Location
 Set-Alias -Name ntc Get-NetTCPConnection
 Set-Alias -Name vping Test-NetConnection
 Set-Alias -Name dnsname Resolve-DnsName
