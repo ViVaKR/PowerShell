@@ -39,3 +39,32 @@ Start-Service ssh-agent
 Get-Service ssh-agent
 
 ssh-add ~\.ssh\id_ed25519
+
+# Format
+Get-ChildItem HKCU:\software\microsoft | Format-Wide -Property pschildname -AutoSize
+
+#* File Hash
+Get-FileHash .\.angular-config.json | Format-List
+
+# Algorithm -
+# SHA1
+# SHA256
+# SHA384
+# SHA512
+# MD5
+# => default => SHA256
+
+#* Get Host : Terminal Info
+(Get-Host).UI.RawUI.WindowSize
+(Get-Host).CurrentCulture | Format-List
+(Get-Host).CurrentCulture.DateTimeFormat | Format-List
+(Get-Host).UI.RawUI
+
+
+
+
+
+
+
+
+

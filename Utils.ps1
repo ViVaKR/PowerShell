@@ -1,9 +1,6 @@
 $sln = "C:\Solutions"
 $gitProj = "F:\1_GitProjects"
 
-
-
-
 # 환경변수 관리
 function Set-Var {
     param (
@@ -12,6 +9,10 @@ function Set-Var {
     )
 
     [System.Environment]::SetEnvironmentVariable($Var, $Val, "Machine")
+}
+
+function Get-DockerConfig {
+    code "C:\Users\bm\.docker\config.json"
 }
 
 function Remove-Var {

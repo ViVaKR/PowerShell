@@ -37,22 +37,23 @@
   - 스크립트 또는 별칭
 
 ```ps1
-	Get-Command -Verb Get -Noun a-noun*
+ Get-Command -Verb Get -Noun a-noun*
 ```
 
 ## cmdlet (command-lets) : PowerShell 명령
+
 - 네이티브 PowerShell 명령
 - 컴파일된 .NET, PowerShell 스크립팅 언어에서 사용됨
-- 
+-
 
 ## 도움말 : `Get-Help`
 
 ```ps1
-	Update-Help -UICulture en-US -Verbose
-	Update-Help -UICulture ko-KR -Verbose
-	Get-Help -Name Get-Help -Full # 전체 도움말 항목 (-Detailed, Examples, Online, Parameter Noun, ShowWindows)
-	help Get-Command -Full | Out-GridView # 별도의 창에 도움말 표시 (권장)
-	help *process*
+ Update-Help -UICulture en-US -Verbose
+ Update-Help -UICulture ko-KR -Verbose
+ Get-Help -Name Get-Help -Full # 전체 도움말 항목 (-Detailed, Examples, Online, Parameter Noun, ShowWindows)
+ help Get-Command -Full | Out-GridView # 별도의 창에 도움말 표시 (권장)
+ help *process*
 ```
 
 ## Get-Command
@@ -69,70 +70,70 @@
 - `Get-Command -ParameterType Process`
 
 ```ps1
-	Get-Command -Name *service* -CommandType Cmdlet, Function, Alias
-	Get-Help Get-FileHash -Examples
-	help Get-FileHash -Examples
+ Get-Command -Name *service* -CommandType Cmdlet, Function, Alias
+ Get-Help Get-FileHash -Examples
+ help Get-FileHash -Examples
 
-	Get-FileHash /etc/apt/sources.list | Format-List
-	Get-FileHash .\Workspace.zip | Format-List
+ Get-FileHash /etc/apt/sources.list | Format-List
+ Get-FileHash .\Workspace.zip | Format-List
 
-	# 개체검색
-	Get-Process -Name 'name-of-process' | Get-Member
-	Get-Command -ParameterType Process
-	Get-Process -Name 'notepad' | Get-Member | Select-Object Name, MemberType
-	Get-Process | Get-Member
+ # 개체검색
+ Get-Process -Name 'name-of-process' | Get-Member
+ Get-Command -ParameterType Process
+ Get-Process -Name 'notepad' | Get-Member | Select-Object Name, MemberType
+ Get-Process | Get-Member
 
-	# Select-Object를 사용하고 고유한 속성 목록을 선택하여 기본 뷰를 재정의할 수 있습니다. 
-	그런 다음 이러한 속성을 Format-Table 또는 Format-List로 보내 원하는 대로 테이블을 표시할 수 있습니다.
+ # Select-Object를 사용하고 고유한 속성 목록을 선택하여 기본 뷰를 재정의할 수 있습니다. 
+ 그런 다음 이러한 속성을 Format-Table 또는 Format-List로 보내 원하는 대로 테이블을 표시할 수 있습니다.
 
-	Get-Process zsh | Format-List -Property *
-	Get-Process zsh | Get-Member -Name C*
-	Get-Process zsh | Select-Object -Property Id, Name, CPU
+ Get-Process zsh | Format-List -Property *
+ Get-Process zsh | Get-Member -Name C*
+ Get-Process zsh | Select-Object -Property Id, Name, CPU
 
-	## ssh
-	New-PSSession
-	(Get-Command New-PSSession).ParameterSets.Name
-	#- SSHHost
-	#- SSHHostHashParam
+ ## ssh
+ New-PSSession
+ (Get-Command New-PSSession).ParameterSets.Name
+ #- SSHHost
+ #- SSHHostHashParam
 
-	# 모든 속성
-	Get-Service -Name w32time | Select-Object -Property *
+ # 모든 속성
+ Get-Service -Name w32time | Select-Object -Property *
 
-	# 메서드 결과범위
-	Get-Service -Name w32time | Get-Member -MemberType Method
-	# 메서드 사용
-	(Get-Servivce -Name w32time).Stop()
-	# 서비스 중지
-	Get-Service -Name w32time
-	# 서비스 시작
-	Get-Service -Name w32time | Start-Service -PassThru
+ # 메서드 결과범위
+ Get-Service -Name w32time | Get-Member -MemberType Method
+ # 메서드 사용
+ (Get-Servivce -Name w32time).Stop()
+ # 서비스 중지
+ Get-Service -Name w32time
+ # 서비스 시작
+ Get-Service -Name w32time | Start-Service -PassThru
 
-	# oneline
-	$Srv = 'w32time'; Get-Service -Name $Srv
+ # oneline
+ $Srv = 'w32time'; Get-Service -Name $Srv
 
-	# Where-Object
-	Get-Service | Where-Object Name -eq w32time
+ # Where-Object
+ Get-Service | Where-Object Name -eq w32time
 ```
 
 ## [Install PowerShell On Ubuntu](https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.3)
 
 ```bash
-	# Update the list of packages
-	sudo apt-get update
-	# Install pre-requisite packages.
-	sudo apt-get install -y wget apt-transport-https software-properties-common
-	# Download the Microsoft repository GPG keys
-	wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
-	# Register the Microsoft repository GPG keys
-	sudo dpkg -i packages-microsoft-prod.deb
-	# Delete the the Microsoft repository GPG keys file
-	rm packages-microsoft-prod.deb
-	# Update the list of packages after we added packages.microsoft.com
-	sudo apt-get update
-	# Install PowerShell
-	sudo apt-get install -y powershell
-	# Start PowerShell
-	pwsh
+ # Update the list of packages
+ sudo apt-get update
+ # Install pre-requisite packages.
+ sudo apt-get install -y wget apt-transport-https software-properties-common
+ # Download the Microsoft repository GPG keys
+ wget -q "https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb"
+ # Register the Microsoft repository GPG keys
+ sudo dpkg -i packages-microsoft-prod.deb
+ # Delete the the Microsoft repository GPG keys file
+ rm packages-microsoft-prod.deb
+ # Update the list of packages after we added packages.microsoft.com
+ sudo apt-get update
+ # Install PowerShell
+ sudo apt-get install -y powershell
+ # Start PowerShell
+ pwsh
 ```
 
 ## Uninstall PowerShell On Ubuntu : `sudo apt-get remove powershell`
@@ -177,27 +178,27 @@
   - macOS - ~/.config/powershell/Microsoft.Powershell_profile.ps1
 
 ```ps1
-	Test-Path -Path $PROFILE.AllUsersAllHosts
+ Test-Path -Path $PROFILE.AllUsersAllHosts
 
-	if(!(Test-Path -Path <profile-name>)) {
-		New-Item -ItemType File -Path <profile-name> -Force
-	}
+ if(!(Test-Path -Path <profile-name>)) {
+  New-Item -ItemType File -Path <profile-name> -Force
+ }
 
-	# 프로필 편집
-	code $PROFILe							# D:\Documents\PowerShell\Microsoft.VSCode_profile.ps1
-	code $PROFILE.AllUsersAllHosts			# C:\Program Files\PowerShell\7\profile.ps1
-	code $PROFILE.CurrentUserAllHosts		# D:\Documents\PowerShell\profile.ps1
-	code $PROFILE.AllUsersCurrentHost		# C:\Program Files\PowerShell\7\Microsoft.VSCode_profile.ps1
-	code $PROFILE.CurrentUserCurrentHost	# D:\Documents\PowerShell\Microsoft.VSCode_profile.ps1
+ # 프로필 편집
+ code $PROFILe       # D:\Documents\PowerShell\Microsoft.VSCode_profile.ps1
+ code $PROFILE.AllUsersAllHosts   # C:\Program Files\PowerShell\7\profile.ps1
+ code $PROFILE.CurrentUserAllHosts  # D:\Documents\PowerShell\profile.ps1
+ code $PROFILE.AllUsersCurrentHost  # C:\Program Files\PowerShell\7\Microsoft.VSCode_profile.ps1
+ code $PROFILE.CurrentUserCurrentHost # D:\Documents\PowerShell\Microsoft.VSCode_profile.ps1
 
-	# NoProfile
-	pwsh -NoProfile
+ # NoProfile
+ pwsh -NoProfile
 
-	# 매개 변수 전체 목록
-	pwsh -?
+ # 매개 변수 전체 목록
+ pwsh -?
 
-	# 세션에서 프로필을 실행
-	Invoke-Command -Session $s -FilePath $PROFILE
+ # 세션에서 프로필을 실행
+ Invoke-Command -Session $s -FilePath $PROFILE
 
 ```
 
@@ -208,23 +209,23 @@
 ## `Get-Command`
 
 ## `Set-ExcutionPolicy -ExcutionPolicy <Policy Name>`
-	- AllSigned
-	- Bypass
-	- Default
-	- RemoteSigned
-	- Restricted
-	- Undefined
-	- Unrestricted
+ - AllSigned
+ - Bypass
+ - Default
+ - RemoteSigned
+ - Restricted
+ - Undefined
+ - Unrestricted
 
 ## Trusted Repository In PowerShell
 
 ```ps1
- 	
-	Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
- 	Unregister-PSRepository -Name "PSGallery"
-	
-	# 확인
-	Get-PSRepository
+  
+ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
+  Unregister-PSRepository -Name "PSGallery"
+ 
+ # 확인
+ Get-PSRepository
 ```
 
 ```bash
@@ -279,47 +280,47 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 ## ETC Commands
 
 ```ps1
- 	New-Item .gitignore
- 	ni .gitignore
+  New-Item .gitignore
+  ni .gitignore
 
-	# 환경변수
-	$Env:<variable-name>
-	$Env:windir
-	$PSHOME
-	$Env:PATH
-	$Env:PATHEXT # 윈도우에서 실행파일로 간주하는 파일 확장명
-	$Env:TERM
-	$Env:<variable-name> = "<new-value>" # new or update
-	$Env:Foo = "An Example" #new
-	$Env:Foo = '' # remove
-	New-Item -Path Env:\Foo -Value 'Bar'
-	Remove-Item -Path Env:\Foo* -Verbose
+ # 환경변수
+ $Env:<variable-name>
+ $Env:windir
+ $PSHOME
+ $Env:PATH
+ $Env:PATHEXT # 윈도우에서 실행파일로 간주하는 파일 확장명
+ $Env:TERM
+ $Env:<variable-name> = "<new-value>" # new or update
+ $Env:Foo = "An Example" #new
+ $Env:Foo = '' # remove
+ New-Item -Path Env:\Foo -Value 'Bar'
+ Remove-Item -Path Env:\Foo* -Verbose
 
-	# 환경변수 영구 저장 방법 3가지
-	#-1. 프로필에 저장
-	$PROFILE # 프로필 경로 가져오기
-	#-2. SetEnvironmentVariable 메서드 사용
-	[Environment]::SetEnvironmentVariable('Foo', 'Bar', 'Machine')
-	[Environment]::SetEnvironmentVariable('Foo','', Machine)
-	#-3. 시스템 제어판 사용
+ # 환경변수 영구 저장 방법 3가지
+ #-1. 프로필에 저장
+ $PROFILE # 프로필 경로 가져오기
+ #-2. SetEnvironmentVariable 메서드 사용
+ [Environment]::SetEnvironmentVariable('Foo', 'Bar', 'Machine')
+ [Environment]::SetEnvironmentVariable('Foo','', Machine)
+ #-3. 시스템 제어판 사용
 
-	# Where-Object
-	Get-ChildItem -Path $HOME -Recurse | Where-Object {$_.Length -gt 20MB} | Measure-Object
+ # Where-Object
+ Get-ChildItem -Path $HOME -Recurse | Where-Object {$_.Length -gt 20MB} | Measure-Object
 
-	# Alias
-	Get-Alias -Definition Get-Service # 명령의 별칭
+ # Alias
+ Get-Alias -Definition Get-Service # 명령의 별칭
 
-	# Windows 논리드라이브, 공급자 드라디브, 네트워크 공유 드라이브
-	Get-PSDrive
+ # Windows 논리드라이브, 공급자 드라디브, 네트워크 공유 드라이브
+ Get-PSDrive
 
-	Get-PSProvider
+ Get-PSProvider
 
-	Get-ChildItem -Path Cert:\LocalMachine\CA
+ Get-ChildItem -Path Cert:\LocalMachine\CA
 
-	#Show MarkDown
-	Show-MarkDown -Path E:\1_GitProjects\PowerShell\README.md -UseBrowser
+ #Show MarkDown
+ Show-MarkDown -Path E:\1_GitProjects\PowerShell\README.md -UseBrowser
 
-	Invoke-Item https://vivabm.com
+ Invoke-Item https://vivabm.com
 ```
 
 ## 비교 연산자
@@ -372,20 +373,20 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 ---
 
 ```ps1
-	"Hello" -ceq "hello" # False
-	"Hello" -eq "hello" # True
-	5 -ge 5 # True
-	'PowerShell' -like '*shell' # True
-	'PowerShell' -match '^*.shell$' # True
+ "Hello" -ceq "hello" # False
+ "Hello" -eq "hello" # True
+ 5 -ge 5 # True
+ 'PowerShell' -like '*shell' # True
+ 'PowerShell' -match '^*.shell$' # True
 
-	$Numbers = 1..10 # Set 1 ~10
-		$Numbers -contains 15 # False
-		$Numbers -Notcontains 15 # True
-		7 -in $Numbers
-		23 -NotIn $Numbers
-		'PowerShell' -replace 'Shell' # Power
-		'SQL Saturday - Baton Rouge' -Replace 'Saturday', 'Sat' # 대소문자 구분하지 않음
-		'SQL Saturday - Baton Rouge'.Replace('saturday', 'Sat') # 대소문자 구분
+ $Numbers = 1..10 # Set 1 ~10
+  $Numbers -contains 15 # False
+  $Numbers -Notcontains 15 # True
+  7 -in $Numbers
+  23 -NotIn $Numbers
+  'PowerShell' -replace 'Shell' # Power
+  'SQL Saturday - Baton Rouge' -Replace 'Saturday', 'Sat' # 대소문자 구분하지 않음
+  'SQL Saturday - Baton Rouge'.Replace('saturday', 'Sat') # 대소문자 구분
 
 ```
 
@@ -393,23 +394,24 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 
 ## CIM (Common Information Model)
 
-	- `Get-Command -Module CimCmdlets`
-	- WMI에 엑세스 하는 용도
-	- `Get-CimInstance -Query 'Select * from Win32_BIOS'`
-	- `Get-CimInstance -ClassName Win32_BIOS`
-	- `Get-CimInstance -ClassName Win32_BIOS | Select-Object -Property SerialNumber`
-	- `Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber | Select-Object -Property SerialNumber`
-	- `(Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber).SerialNumber`
-	- `$CimSession = New-CimSession -ComputerName Viv -Credential (Get-Credential)`
-    	- `Get-CimInstance -CimSession $CimSession -ClassName Win32_BIOS`
-	- Get-Service -Name WinRM | Start-Service
-    	- Test-WSMan -ComputerName ViV
-  	- `Get-CimSession` : CimSessions 가 현재 연결되어 있는 대상과 사용중인 프로토콜을 확인하는 용도로 사용
+ - `Get-Command -Module CimCmdlets`
+ - WMI에 엑세스 하는 용도
+ - `Get-CimInstance -Query 'Select * from Win32_BIOS'`
+ - `Get-CimInstance -ClassName Win32_BIOS`
+ - `Get-CimInstance -ClassName Win32_BIOS | Select-Object -Property SerialNumber`
+ - `Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber | Select-Object -Property SerialNumber`
+ - `(Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber).SerialNumber`
+ - `$CimSession = New-CimSession -ComputerName Viv -Credential (Get-Credential)`
+     - `Get-CimInstance -CimSession $CimSession -ClassName Win32_BIOS`
+ - Get-Service -Name WinRM | Start-Service
+     - Test-WSMan -ComputerName ViV
+   - `Get-CimSession` : CimSessions 가 현재 연결되어 있는 대상과 사용중인 프로토콜을 확인하는 용도로 사용
+
 ```ps1
-	$DCOM = New-CimSessionOption -Protocol Dcom
-	$Cred = Get-Credential
-	$CimSession = New-CimSession -Computer ViV -SessionOption $DCOM -Credential $Cred
-	Get-CimInstance -CimSession $CimSession -ClassName Win32_BIOS
+ $DCOM = New-CimSessionOption -Protocol Dcom
+ $Cred = Get-Credential
+ $CimSession = New-CimSession -Computer ViV -SessionOption $DCOM -Credential $Cred
+ Get-CimInstance -CimSession $CimSession -ClassName Win32_BIOS
 ```
 
 ## `Get-Command -ParameterName ComputerName` : ComputerName 매개변수가 있는 명령을 확인함
@@ -419,15 +421,15 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 ## 일대일 원격작업 `Enter-PSSession`
 
 ```ps1
-	$Cred = Get-Credential
-	Enter-PSSession -ComputerName Viv -Credential $Cred
+ $Cred = Get-Credential
+ Enter-PSSession -ComputerName Viv -Credential $Cred
 ```
 
 ## 일대다 원격작업
 
 ```ps1
-	# 하나 이상의 원격 컴퓨터 를 대상으로 동시에 명령을 실행하기
-	Invoke-Command -ComputerName c01, c02, c03 { Get-Service -Name W32time } -Credential $Cred
+ # 하나 이상의 원격 컴퓨터 를 대상으로 동시에 명령을 실행하기
+ Invoke-Command -ComputerName c01, c02, c03 { Get-Service -Name W32time } -Credential $Cred
 ```
 
 ## 함수
@@ -444,8 +446,8 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 ## Alias
 
 ```ps1
-	Get-Alias -Definition Get-ChildItem
-	Get-Alias -Name gci
+ Get-Alias -Definition Get-ChildItem
+ Get-Alias -Name gci
 ```
 
 - 호환성 별칭
@@ -456,22 +458,22 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 | cd, chdir | cd | Set-Location | sl, cd, chdir |
 
 
-## 키바인딩 
+## 키바인딩
 
 ```ps1
-	Get-PSReadLineKeyHandler
-	Get-PSReadLineKeyHandler -Unbound
-	Set-PSReadLineKeyHandler -Chord 'Ctrl+Spacebar' -Function MenuComplete
+ Get-PSReadLineKeyHandler
+ Get-PSReadLineKeyHandler -Unbound
+ Set-PSReadLineKeyHandler -Chord 'Ctrl+Spacebar' -Function MenuComplete
 
-	# 키이름 및 코드 바인딩
-	[System.Console]::ReadKey()
-	[System.Console]::ReadLine()
+ # 키이름 및 코드 바인딩
+ [System.Console]::ReadKey()
+ [System.Console]::ReadLine()
 
 ```
 
 ## 배열
 
-* `@()` 을 이용하여 빈 배열을 만듬
+- `@()` 을 이용하여 빈 배열을 만듬
 
 ## 자동변수
 
@@ -479,11 +481,11 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 `$?` : 마지막 명령의 실행 상태 포함 True, False
 `$^` : 세션에서 받은 마지막줄의 첫번째 토큰
 `$_` : $PSItem 과 동일, 파이프 라인의 모든 개체에 대해 작업을 수행하는 명령에서 이 변수를 사용할 수 있음.
-`$args` : 
-`$Error` : 
+`$args` :
+`$Error` :
 `$Event` : 처리중인 이벤트를 나타내는 PSEventArgs 개체를 포함
-`$EventArgs` : 
-`$ExecutionContext` : 
+`$EventArgs` :
+`$ExecutionContext` :
 `$false`
 `$foreach`
 `$HOME`
@@ -493,7 +495,7 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 `$IsMacOS`
 `$IsWindows`
 `$LASTEXITCODE` : 종료코드 (0: 성공적으로 완료, 1 : 예외 종류)
-`$Matches` : 
+`$Matches` :
 `$MyInvocation`
 `$NestedPromptLevel`
 `$null` :
@@ -545,24 +547,24 @@ takeown /F Microsoft.Minecraft* /r /d y
 ```
 
 ```ps1
-	Get-AppxPackage -AllUsers | where-object {$_.name -eq "LGElectronics.LGChatbot"} |  Remove-AppxPackage -AllUsers
+ Get-AppxPackage -AllUsers | where-object {$_.name -eq "LGElectronics.LGChatbot"} |  Remove-AppxPackage -AllUsers
 ```
 
-## VSCode Start with Changed Extensions 
+## VSCode Start with Changed Extensions
 `"C:\Users\Viv\AppData\Local\Programs\Microsoft VS Code\Code.exe" --extensions-dir="E:\Microsoft VS Code\extensions"`
 
 
 ```ps1
-	# 윈도우 시스템 확인
-	systeminfo 
-	Get-WmiObject -Class win32_OperatingSystem | % Caption
-	wmic os get osarchitecture
-	wmic cpu get datawidth
-	[Environment]::Is64BitOperatingSystem
+ # 윈도우 시스템 확인
+ systeminfo 
+ Get-WmiObject -Class win32_OperatingSystem | % Caption
+ wmic os get osarchitecture
+ wmic cpu get datawidth
+ [Environment]::Is64BitOperatingSystem
 
-	# 별칭 만들기
-	Set-Alias -Name ll -Value Get-ChildItem
+ # 별칭 만들기
+ Set-Alias -Name ll -Value Get-ChildItem
 
-	# 삭제
-	Remove-Item c:\Tmp\* -Recurse -Force
+ # 삭제
+ Remove-Item c:\Tmp\* -Recurse -Force
 ```
