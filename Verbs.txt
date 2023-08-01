@@ -31,7 +31,7 @@ Show        sh          Common         Makes a resource visible to the user
 Skip        sk          Common         Bypasses one or more resources or points in a sequence
 Split       sl          Common         Separates parts of a resource
 Step        st          Common         Moves to the next point or resource in a sequence
-Switch      sw          Common         Specifies an action that alternates between two resources, such as to change between two locations, responsi…
+Switch      sw          Common         Specifies an action that alternates between two resources, such as to change between two locations, r…
 Undo        un          Common         Sets a resource to its previous state
 Unlock      uk          Common         Releases a resource that was locked
 Watch       wc          Common         Continually inspects or monitors a resource for changes
@@ -45,15 +45,15 @@ Backup      ba          Data           Stores data by replicating it
 Checkpoint  ch          Data           Creates a snapshot of the current state of the data or of its configuration
 Compare     cr          Data           Evaluates the data from one resource against the data from another resource
 Compress    cm          Data           Compacts the data of a resource
-Convert     cv          Data           Changes the data from one representation to another when the cmdlet supports bidirectional conversion or whe…
-ConvertFrom cf          Data           Converts one primary type of input (the cmdlet noun indicates the input) to one or more supported output typ…
-ConvertTo   ct          Data           Converts from one or more types of input to a primary output type (the cmdlet noun indicates the output type)
+Convert     cv          Data           Changes the data from one representation to another when the cmdlet supports bidirectional conversion…
+ConvertFrom cf          Data           Converts one primary type of input (the cmdlet noun indicates the input) to one or more supported out…
+ConvertTo   ct          Data           Converts from one or more types of input to a primary output type (the cmdlet noun indicates the outp…
 Dismount    dm          Data           Detaches a named entity from a location
 Edit        ed          Data           Modifies existing data by adding or removing content
 Expand      en          Data           Restores the data of a resource that has been compressed to its original state
-Export      ep          Data           Encapsulates the primary input into a persistent data store, such as a file, or into an interchange format
+Export      ep          Data           Encapsulates the primary input into a persistent data store, such as a file, or into an interchange f…
 Group       gp          Data           Arranges or associates one or more resources
-Import      ip          Data           Creates a resource from data that is stored in a persistent data store (such as a file) or in an interchange…
+Import      ip          Data           Creates a resource from data that is stored in a persistent data store (such as a file) or in an inte…
 Initialize  in          Data           Prepares a resource for use, and sets it to a default state
 Limit       l           Data           Applies constraints to a resource
 Merge       mg          Data           Creates a single resource from multiple resources
@@ -66,7 +66,7 @@ Sync        sy          Data           Assures that two or more resources are in
 Unpublish   ub          Data           Makes a resource unavailable to others
 Update      ud          Data           Brings a resource up-to-date to maintain its state, accuracy, conformance, or compliance
 Debug       db          Diagnostic     Examines a resource to diagnose operational problems
-Measure     ms          Diagnostic     Identifies resources that are consumed by a specified operation, or retrieves statistics about a resource
+Measure     ms          Diagnostic     Identifies resources that are consumed by a specified operation, or retrieves statistics about a reso…
 Ping        pi          Diagnostic     Use the Test verb
 Repair      rp          Diagnostic     Restores a resource to a usable condition
 Resolve     rv          Diagnostic     Maps a shorthand representation of a resource to a more complete representation
@@ -74,11 +74,11 @@ Test        t           Diagnostic     Verifies the operation or consistency of 
 Trace       tr          Diagnostic     Tracks the activities of a resource
 Approve     ap          Lifecycle      Confirms or agrees to the status of a resource or process
 Assert      as          Lifecycle      Affirms the state of a resource
-Build       bd          Lifecycle      Creates an artifact
+Build       bd          Lifecycle      Creates an artifact (usually a binary or document) out of some set of input files (usually source cod…
 Complete    cmp         Lifecycle      Concludes an operation
 Confirm     cn          Lifecycle      Acknowledges, verifies, or validates the state of a resource or process
 Deny        dn          Lifecycle      Refuses, objects, blocks, or opposes the state of a resource or process
-Deploy      dp          Lifecycle      Sends an application, website, or solution to a remote target[s] in such a way that a consumer of that solut…
+Deploy      dp          Lifecycle      Sends an application, website, or solution to a remote target[s] in such a way that a consumer of tha…
 Disable     d           Lifecycle      Configures a resource to an unavailable or inactive state
 Enable      e           Lifecycle      Configures a resource to an available or active state
 Install     is          Lifecycle      Places a resource in a location, and optionally initializes it
