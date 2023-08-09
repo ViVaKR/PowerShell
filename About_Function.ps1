@@ -1,3 +1,4 @@
+
 # 주석기반 함수
 function Get-MrAutoStoppedService {
 	<#
@@ -86,3 +87,8 @@ function Get-PowerShellProcess {
 # 관리자 권한으로 실행 옵션
 function Start-PSAdmin { Start-Process Pwsh -Verb RunAs }
 
+# 고급함수
+## -> PowerShell 함수로 작성된 cmdlet 을 만들수 있음
+## -> cmdlet : C# 과 같은 .NET 언어로 작성된 .NET Class
+
+#? CmdletBinding : C#으로 작성되어 컴파일된 cmdlet 처럼 작동하게 만드는 함수

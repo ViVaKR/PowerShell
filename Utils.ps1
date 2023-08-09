@@ -1,6 +1,82 @@
 $sln = "C:\Solutions"
 $gitProj = "F:\1_GitProjects"
 
+# * Modules * #
+# Import-Module "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
+# Enter-VsDevShell -InstanceId c2dcfd7d
+
+
+# * PsDrive * #
+## Map PSDrives to other registry hives
+if (!(Test-Path HKCR:)) {
+    $null = New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT
+    $null = New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
+}
+
+# 함수 관리
+# (1) 드라이브 `Get-ChildItme function:`
+# (2) Help `(Get-ChildItem function:help).Definition`,
+# (3)      `$function:help`
+
+# 2023 년 1월 1일 이후 변경된 파일 찾기
+function Get-NewPix {
+
+    param (
+        [string]$FileName
+    )
+
+    $start = Get-Date -Year 2023 -Month 1 -Day 1
+    $items = Get-ChildItem -Path "C:\Solutions\$FileName" -Recurse
+    $items | Where-Object { $_.LastWriteTime -gt $start }
+}
+
+# 프롬프트 편집
+function Set-Posh {
+    code "C:\Users\bm\AppData\Local\Programs\oh-my-posh\themes\jandedobbeleer.omp.json"
+}
+
+# Switch Item : 매개변수 유무에 따른 실행
+# Switch-Item -on or -off
+# Switch-Item -on:$True
+function Switch-Item {
+    param ([switch]$on)
+    if ($on) { "Switch On" }
+    else { "Switch Off" }
+}
+
+# 파이프 라인
+## - 1, 2, 4 | Get-PipeLine 
+function Get-PipeLine {
+    # 파이프 라인에서 함수를 사용하는 경우 
+    # 파이프된 개체는 자동변수 $input 에 할당됨
+    # 모든 개체는 end 에서 받은후 실행
+    begin { 
+        "Begin: The input is $input" 
+    } # 함수의 시작 부분에서 한번 만 실행
+
+    # process 가 있으면 자동변수 $input 은 $_ 할당되고 삭제됨
+    process { # 한번에 하나의 파이프라인 개체의 자동변수 `$_` 에 할당
+        "The value is : $_"
+    }
+
+    end { 
+        "End: The input is $input"
+    }
+    clean { 
+        "Clean"
+    } 
+}
+
+# 필터  : `filter [<scope>]<name> {<statement list>}`
+# -> `Get-WinEvent -LogName System -MaxEvents 100 | Get-ErrorLog -Message`
+
+filter Get-ErrorLog ([switch]$Message) {
+    if($Message) { Out-Host -InputObject $_.Message }
+    else { $_ }
+}
+
+
+
 # 환경변수 관리
 function Set-Var {
     param (
@@ -340,106 +416,6 @@ Website: https://vivabm.com
     }
 }
 
-<# [ 동사목록 ]
-Verb        Group
-----        -----
-Add         Common
-Approve     Lifecycle
-Assert      Lifecycle
-Backup      Data
-Block       Security
-Checkpoint  Data
-Clear       Common
-Close       Common
-Compare     Data
-Complete    Lifecycle
-Compress    Data
-Confirm     Lifecycle
-Connect     Communications
-Convert     Data
-ConvertFrom Data
-ConvertTo   Data
-Copy        Common
-Debug       Diagnostic
-Deny        Lifecycle
-Disable     Lifecycle
-Disconnect  Communications
-Dismount    Data
-Edit        Data
-Enable      Lifecycle
-Enter       Common
-Exit        Common
-Expand      Data
-Export      Data
-Find        Common
-Format      Common
-Get         Common
-Grant       Security
-Group       Data
-Hide        Common
-Import      Data
-Initialize  Data
-Install     Lifecycle
-Invoke      Lifecycle
-Join        Common
-Limit       Data
-Lock        Common
-Measure     Diagnostic
-Merge       Data
-Mount       Data
-Move        Common
-New         Common
-Open        Common
-Optimize    Common
-Out         Data
-Ping        Diagnostic
-Pop         Common
-Protect     Security
-Publish     Data
-Push        Common
-Read        Communications
-Receive     Communications
-Redo        Common
-Register    Lifecycle
-Remove      Common
-Rename      Common
-Repair      Diagnostic
-Request     Lifecycle
-Reset       Common
-Resize      Common
-Resolve     Diagnostic
-Restart     Lifecycle
-Restore     Data
-Resume      Lifecycle
-Revoke      Security
-Save        Data
-Search      Common
-Select      Common
-Send        Communications
-Set         Common
-Show        Common
-Skip        Common
-Split       Common
-Start       Lifecycle
-Step        Common
-Stop        Lifecycle
-Submit      Lifecycle
-Suspend     Lifecycle
-Switch      Common
-Sync        Data
-Test        Diagnostic
-Trace       Diagnostic
-Unblock     Security
-Undo        Common
-Uninstall   Lifecycle
-Unlock      Common
-Unprotect   Security
-Unpublish   Data
-Unregister  Lifecycle
-Update      Data
-Use         Other
-Wait        Lifecycle
-Watch       Common
-Write       Communications
-
-#>
+function OpenExample {
+    code (Get-ChildItem $HOME/.vscode/extensions/ms-vscode.powershell-*/examples)[-1]
+}
