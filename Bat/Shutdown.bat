@@ -1,0 +1,3 @@
+prompt #
+
+shutdown -s

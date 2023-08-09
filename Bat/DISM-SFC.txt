@@ -1,0 +1,8 @@
+
+sfc /scannow
+
+DISM /Online /Cleanup-Image /CheckHealth
+
+DISM /online /cleanup-image /scanhealth
+
+DISM /online /cleanup-image /restorehealth

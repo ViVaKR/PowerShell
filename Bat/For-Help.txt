@@ -1,0 +1,4 @@
+For /d : 디렉토리를 대상으로 작업함
+For /r : 하위 디렉토리의 파일들 까지 처리 합니다.
+For /f : 텍스트 파일 행 처리
+for /f "delims=" %%i in (TestFile.txt) do echo  접두어: %%i
