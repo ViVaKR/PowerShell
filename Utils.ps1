@@ -5,7 +5,6 @@ $gitProj = "F:\1_GitProjects"
 # Import-Module "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
 # Enter-VsDevShell -InstanceId c2dcfd7d
 
-
 # * PsDrive * #
 ## Map PSDrives to other registry hives
 if (!(Test-Path HKCR:)) {
@@ -75,8 +74,6 @@ filter Get-ErrorLog ([switch]$Message) {
     else { $_ }
 }
 
-
-
 # 환경변수 관리
 function Set-Var {
     param (
@@ -100,7 +97,6 @@ function Remove-Var {
 }
 
 #! OpenSSH
-
 function Get-SSH {
     # Confirm the Firewall rule is configured. It should be created automatically by setup. Run the following to verify
     if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyContinue | Select-Object Name, Enabled)) {
