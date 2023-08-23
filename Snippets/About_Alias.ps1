@@ -2,7 +2,7 @@
 
 ## Get-Alias
 ## New-Alias
-    New-Alias -Name gh -Value Get-Help
+New-Alias -Name gh -Value Get-Help
 
 ## Set-Alias
 ## Remove-Alias

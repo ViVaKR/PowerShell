@@ -1,3 +1,5 @@
+#! Get-Service
+
 Get-Service | Out-File "Current_Services.txt"
 
 Get-Service | Where-Object {$_.Status -eq "Running"}
