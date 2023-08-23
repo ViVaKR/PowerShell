@@ -1,6 +1,7 @@
 $sln = "C:\Solutions"
 $gitProj = "F:\1_GitProjects"
 
+
 # * Modules * #
 # Import-Module "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\Microsoft.VisualStudio.DevShell.dll"
 # Enter-VsDevShell -InstanceId c2dcfd7d
@@ -11,6 +12,9 @@ if (!(Test-Path HKCR:)) {
     $null = New-PSDrive -Name HKCR -PSProvider Registry -Root HKEY_CLASSES_ROOT
     $null = New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
 }
+
+# * New-PSDrive * # 
+New-PSDrive -Name VG -PSProvider FileSystem -Root "F:\1_GitProjects" | Out-Null
 
 # 함수 관리
 # (1) 드라이브 `Get-ChildItme function:`
