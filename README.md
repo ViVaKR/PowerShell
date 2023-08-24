@@ -40,11 +40,19 @@
  Get-Command -Verb Get -Noun a-noun*
 ```
 
-## cmdlet (command-lets) : PowerShell 명령
+## Cmdlet (Command-lets) : PowerShell 명령
 
-- 네이티브 PowerShell 명령
-- 컴파일된 .NET, PowerShell 스크립팅 언어에서 사용됨
--
+- 독립실행파일이 아닌 네이티브 PowerShell 명령
+- PowerShell Module에 수집되어 요청시 로드될 수 있음
+- 컴파일된 .NET언어, PowerShell 스크립팅 언어에서 사용됨
+- 동사-명사 형식으로 명명
+- 동사 : cmdlet 이 수행하는 작업
+- 명사 : cmdlet 작업이 수행되는 대상 리소스
+- .NET 클래스의 인스턴스
+- 자체 구문분석, 오류 프리젠테이션 및 출력 형식은 런타임에 처리됨
+- 텍스트 스트림이 아닌 파이프라인에서 입출력 개체를 처리하고
+- 기본클래스 : System.Object 에서 파생되는 .NET 클래스를 기반으로 함
+- 
 
 ## 도움말 : `Get-Help`
 

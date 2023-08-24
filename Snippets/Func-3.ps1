@@ -1,5 +1,5 @@
-
-function vTouch {
+﻿
+function Get-vTouch {
 
 	$file = $args[0]
 
@@ -8,7 +8,7 @@ function vTouch {
 	}
 
 	if (Test-Path $file) {
-		echo (Get-ChildItem $file).LastWriteTime
+		Write-Output (Get-ChildItem $file).LastWriteTime
 	}
 
 }
