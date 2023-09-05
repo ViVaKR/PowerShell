@@ -1,4 +1,19 @@
-﻿
+﻿#! 함수
+<# 
+    (1) 재사용 가능한 코드 블록
+    (2) 반복적인 작업을 수행
+    (3) 함수를 호출할 때 데이터를 전달할 수있음
+    (4) Param() 블럭을 사용
+
+#>
+
+function Get-SecurityEvent {
+    param (
+        [string]$ComputerName
+    ) # end Param
+    Get-EventLog -LogName Security -ComputerName $ComputerName -Newest 10
+}
+
 function Get-FuncName {
 
     <#
@@ -169,8 +184,7 @@ function OpenExample {
 }
 
 
-function Test-WriteError
-{
+function Test-WriteError {
     Write-Error "Bad"
     "The `$? variable is: $?"
 }

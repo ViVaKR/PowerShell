@@ -576,3 +576,22 @@ takeown /F Microsoft.Minecraft* /r /d y
  # 삭제
  Remove-Item c:\Tmp\* -Recurse -Force
 ```
+
+## 오류 처리 전역변수
+
+- `$ErrorActionPreference`
+  - Continue : 기본값
+  - SilentlyContinue : 오류 메시지를 표시하지 않고 계속 실행
+  - Inquire : 수행할 작업을 묻는 프롬프트 표시
+  - Stop : 오류를 종료 처리하고 실행 중지, 오류 트래핑
+
+## 점소싱
+
+- 다른 스크립트를 현재 범위로 가져오는 방법) :`. C:\Scripts\functions.ps1`
+
+
+
+
+
+
+

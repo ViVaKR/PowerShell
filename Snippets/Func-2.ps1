@@ -18,3 +18,16 @@ function Test {
 }
 
 "one", "two" | Test
+
+
+function Get-SecurityEvent {
+    param (
+        [string]$ComputerName
+    ) # end Param
+    
+    Write-Host $ComputerName, " Hello World"
+    return($ComputerName)
+}
+
+$result = (Get-SecurityEvent -ComputerName viv)
+Write-Host $result
