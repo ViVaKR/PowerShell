@@ -1,5 +1,6 @@
 ﻿# (1) 원격 데스크탑 허용 확인
-(Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\" -Name fDenyTSConnections).fDenyTSConnections | &{if($result -eq 0) {"- RDP -> Allow"} Else {"- RDP -> Deny"}}
+$result = (Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Terminal Server\" -Name fDenyTSConnections).fDenyTSConnections 
+$resutl | &{if($result -eq 0) {"- RDP -> Allow"} Else {"- RDP -> Deny"}}
 
 # (2) 원격 데스크탑 허용하기 ( 1 번 결과가 Deny 로 나오면...)
 Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -Name "fDenyTSConnections" -Value 0
@@ -23,5 +24,3 @@ Test-NetConnection -ComputerName Viv -Port 9037 -InformationLevel Quiet
 
 # (8) 터미털 서비스 재시작
 Restart-Service TermService -Force
-
-
