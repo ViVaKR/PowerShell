@@ -70,7 +70,6 @@ function Remove-Var {
     param (
         [string]$Var
     )
-
     [System.Environment]::SetEnvironmentVariable($Var, $null, "Machine")
 }
 
