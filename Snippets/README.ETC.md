@@ -30,8 +30,6 @@
 - HKLM
 - HKU
 
-
-
 - Get-WmiObject	WMI 클래스 또는 정보의 인스턴스를 가져옵니다.
 - Invoke-WmiMethod	WMI 메서드를 호출합니다.
 - Register-WmiEvent	WMI 이벤트를 구독합니다.
