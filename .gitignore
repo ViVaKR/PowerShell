@@ -1,6 +1,4 @@
-PsProj/.vscode
-PsProj/bin
-PsProj/obj
+
 PwshDotnet/.vscode/
 PwshDotnet/**/bin/
 PwshDotnet/**/obj/
