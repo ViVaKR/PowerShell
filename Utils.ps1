@@ -203,3 +203,9 @@ function GoGitProjects {
 function EditPosh {
     code $Env:POSH_THEME
 }
+
+
+fuction Etc {
+    Get-Host
+    Update-Help
+}
