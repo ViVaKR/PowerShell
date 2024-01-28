@@ -589,4 +589,6 @@ takeown /F Microsoft.Minecraft* /r /d y
 
 - 다른 스크립트를 현재 범위로 가져오는 방법) :`. C:\Scripts\functions.ps1`
 
-
+```ps1
+  Install-Module -Name PSWindowsUpdate
+```
