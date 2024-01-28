@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿. "./PI.ps1"
 
 <# 
@@ -46,3 +47,15 @@
         -> ARP (Address REsolution Protocol)
     - ㄴ어라ㅣ
 #>
+=======
+﻿$name = "Hello"
+
+Write-Host "${name}_World"
+
+Write-Output (1, 2, 3 -join "* ")
+
+$($x = 1; $y = 2;)
+"Hello, World $($x.GetType().Name) $y"
+
+$p = ps | Select-Object -First 1; "Proc Name is $($p.Name)"
+>>>>>>> da13160 (modified Playground)

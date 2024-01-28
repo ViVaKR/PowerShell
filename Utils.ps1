@@ -12,9 +12,8 @@ if (!(Test-Path HKCR:)) {
     $null = New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS
 }
 
-# * New-PSDrive * # 
+# * New-PSDrive * #
 New-PSDrive -Name VG -PSProvider FileSystem -Root "F:\1_GitProjects" | Out-Null
-
 
 ## Add argument completer for the dotnet CLI tool
 $scriptblock = {
@@ -83,7 +82,7 @@ function Get-SSH {
     else {
         Write-Output "Firewall rule 'OpenSSH-Server-In-TCP' has been created and exists."
     }
-    
+
 }
 
 # Go To PowerShell Folder
@@ -139,7 +138,7 @@ function FindService {
 }
 
 function GetAllServices {
-    Get-Service -ErrorAction SilentlyContinue 
+    Get-Service -ErrorAction SilentlyContinue
 }
 
 function GetStartedServices {
@@ -155,7 +154,7 @@ function GetDirectories {
 }
 
 function GetServiceMember {
-    Get-Service -ErrorAction SilentlyContinue | Get-Member -MemberType Method 
+    Get-Service -ErrorAction SilentlyContinue | Get-Member -MemberType Method
 }
 
 function GetPath {
