@@ -19,9 +19,9 @@ New-PSDrive -Name VG -PSProvider FileSystem -Root "F:\1_GitProjects" | Out-Null
 $scriptblock = {
     param($wordToComplete, $commandAst, $cursorPosition)
     dotnet complete --position $cursorPosition $commandAst.ToString() |
-        ForEach-Object {
-            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
-        }
+    ForEach-Object {
+        [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+    }
 }
 
 Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock $scriptblock
@@ -209,3 +209,15 @@ fuction Etc {
     Get-Host
     Update-Help
 }
+
+winget.exe --info
+winget.exe export package.json
+winget.exe list -n 9
+
+# [ source ]리리
+# msstore : Microsoft Store 카탈로그
+# winget : 윈도우 패키지 관리자 앱 리포지토리
+
+winget.exe source update winget
+winget.exe source list
+winget.exe source add --name Contoso
