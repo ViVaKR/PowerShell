@@ -222,13 +222,9 @@ winget.exe source update winget
 winget.exe source list
 winget.exe source add --name Contoso
 
-```bash
 # Reload Profile
 . $PROFILE
 
 # Error Check
 & $PROFILE
 
-
-
-```
