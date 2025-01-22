@@ -13,7 +13,7 @@ if (!(Test-Path HKCR:)) {
 }
 
 # * New-PSDrive * #
-New-PSDrive -Name VG -PSProvider FileSystem -Root "F:\1_GitProjects" | Out-Null
+# New-PSDrive -Name VG -PSProvider FileSystem -Root "GitProjects" | Out-Null
 
 ## Add argument completer for the dotnet CLI tool
 $scriptblock = {

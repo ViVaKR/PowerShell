@@ -1,16 +1,12 @@
-<!-- markdownlint-disable MD012 -->
-<!-- markdownlint-disable MD046 -->
-<!-- markdownlint-disable MD022 -->
-
 # PowerShell
 
 ## 파워쉘이란
 
 - 명령줄
-  - 그래픽 인터페이스 보다 속도가 빠름
-  - 명령 일괄 처리를 실행할 수 있음으로 작업 자동화에 적합함
-  - 클라우드 리소스 및 기타 리소스와 상호 작용 가능
-  - 스크립트 를 텍스트 파일에 저장하고 소스 제어 시스템을 사용할 수 있음
+    - 그래픽 인터페이스 보다 속도가 빠름
+    - 명령 일괄 처리를 실행할 수 있음으로 작업 자동화에 적합함
+    - 클라우드 리소스 및 기타 리소스와 상호 작용 가능
+    - 스크립트 를 텍스트 파일에 저장하고 소스 제어 시스템을 사용할 수 있음
 - 스크립팅 언어
 - 관리작업을 자동화 하기 위한 프레임워크
 - 플랫폼 간의 도구로 발전
@@ -25,16 +21,16 @@
 
 - 파워셸에서는 개체를 입력 및 출력으로 사용하므로 서식 지정 및 추출에 소요시간을 줄일 수 있음
 - *Cmdlet* (command let) : 컴파일된 명령
-  - .NET, .NET Core 에서 개발되어 파워셸 내에서 명령을 호출함
-  - 명명표준 : `동사-명사`  $\rightarrow$ `Get-Verb`
-  - 별도의 실행 파일이 아닌 공용 런타임에 빌드되어 매개변수 구문 분석 및 파이프 라인 동작에서 일관된 환경을 제공함
-  - 일반적으로 개체 입력을 받아들이고 개체를 반환함
-  - NET Core 로 빌드되는 오픈소스로서, 유연하고 확장성이 탁월함
+    - .NET, .NET Core 에서 개발되어 파워셸 내에서 명령을 호출함
+    - 명명표준 : `동사-명사`  $\rightarrow$ `Get-Verb`
+    - 별도의 실행 파일이 아닌 공용 런타임에 빌드되어 매개변수 구문 분석 및 파이프 라인 동작에서 일관된 환경을 제공함
+    - 일반적으로 개체 입력을 받아들이고 개체를 반환함
+    - NET Core 로 빌드되는 오픈소스로서, 유연하고 확장성이 탁월함
 - 다양한 유형의 명령
-  - 네이티브 실행 파일
-  - cmdlet
-  - 함수
-  - 스크립트 또는 별칭
+    - 네이티브 실행 파일
+    - cmdlet
+    - 함수
+    - 스크립트 또는 별칭
 
 ```ps1
  Get-Command -Verb Get -Noun a-noun*
@@ -52,7 +48,7 @@
 - 자체 구문분석, 오류 프리젠테이션 및 출력 형식은 런타임에 처리됨
 - 텍스트 스트림이 아닌 파이프라인에서 입출력 개체를 처리하고
 - 기본클래스 : System.Object 에서 파생되는 .NET 클래스를 기반으로 함
-- 
+-
 
 ## 도움말 : `Get-Help`
 
@@ -73,11 +69,15 @@
 - Select-Object 필터링 : `Get-Command | Select-Object -First 5 -Property Name, Source`
 - Where-Object 필터링 : `Get-Process | Where-Object {$_.ProcessName -like "n*"}`
 - Get-Member : 명령에 사용할 수 있는 개체, 속성 및 메서드 를 검색
-  - `Get-Process | Get-Member -MemberType Method`
-  - `Get-Process | Get-Member | Select-Object Name, Definition`
+    - `Get-Process | Get-Member -MemberType Method`
+    - `Get-Process | Get-Member | Select-Object Name, Definition`
 - `Get-Command -ParameterType Process`
 
 ```ps1
+ # SqlServer
+ Install-Module -Name SqlServer
+
+
  Get-Command -Name *service* -CommandType Cmdlet, Function, Alias
  Get-Help Get-FileHash -Examples
  help Get-FileHash -Examples
@@ -91,7 +91,7 @@
  Get-Process -Name 'notepad' | Get-Member | Select-Object Name, MemberType
  Get-Process | Get-Member
 
- # Select-Object를 사용하고 고유한 속성 목록을 선택하여 기본 뷰를 재정의할 수 있습니다. 
+ # Select-Object를 사용하고 고유한 속성 목록을 선택하여 기본 뷰를 재정의할 수 있습니다.
  그런 다음 이러한 속성을 Format-Table 또는 Format-List로 보내 원하는 대로 테이블을 표시할 수 있습니다.
 
  Get-Process zsh | Format-List -Property *
@@ -123,8 +123,6 @@
  Get-Service | Where-Object Name -eq w32time
 ```
 
-## [Install PowerShell On Ubuntu](https://learn.microsoft.com/en-us/powershell/scripting/install/install-ubuntu?view=powershell-7.3)
-
 ```bash
  # Update the list of packages
  sudo apt-get update
@@ -146,7 +144,6 @@
 
 ## Uninstall PowerShell On Ubuntu : `sudo apt-get remove powershell`
 
-
 ## [Installing PowerShell on macOS](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-macos?view=powershell-7.3)
 
 ## Install PowerShell on Windows : `dotnet tool install --global PowerShell`
@@ -166,24 +163,24 @@
 - The `$PSHOME` : Installation directory for PowerShell
 - The `$HOME` : Current user's home directory
 - 모든 사용자, 모든 호스트 `All Users, All Hosts`
-  - $PROFILE.AllUsersAllHosts
-  - Windows - $PSHOME\Profile.ps1
-  - Linux - /usr/local/microsoft/powershell/7/profile.ps1
-  - macOS - /usr/local/microsoft/powershell/7/profile.ps1
+    - $PROFILE.AllUsersAllHosts
+    - Windows - $PSHOME\Profile.ps1
+    - Linux - /usr/local/microsoft/powershell/7/profile.ps1
+    - macOS - /usr/local/microsoft/powershell/7/profile.ps1
 - 모든 사용자, 현재 호스트 `All Users, Current Host`
-  - $PROFILE.AllUsersCurrentHost
-  - Windows - $PSHOME\Microsoft.PowerShell_profile.ps1
-  - Linux - /usr/local/microsoft/powershell/7/Microsoft.Powershell_profile.ps1
-  - macOS - /usr/local/microsoft/powershell/7/Microsoft.Powershell_profile.ps1
+    - $PROFILE.AllUsersCurrentHost
+    - Windows - $PSHOME\Microsoft.PowerShell_profile.ps1
+    - Linux - /usr/local/microsoft/powershell/7/Microsoft.Powershell_profile.ps1
+    - macOS - /usr/local/microsoft/powershell/7/Microsoft.Powershell_profile.ps1
 - 현재 사용자, 모든 호스트 `Current User, All Hosts`
-  - Windows - $HOME\Documents\PowerShell\Profile.ps1
-  - Linux - ~/.config/powershell/profile.ps1
-  - macOS - ~/.config/powershell/profile.ps1
+    - Windows - $HOME\Documents\PowerShell\Profile.ps1
+    - Linux - ~/.config/powershell/profile.ps1
+    - macOS - ~/.config/powershell/profile.ps1
 - 현재 사용자, 현재 호스트 `Current user, Current Host`
-  - `$PROFILE.CurrentUserCurrentHost`
-  - Windows - $HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 `$PROFILE`
-  - Linux - ~/.config/powershell/Microsoft.Powershell_profile.ps1
-  - macOS - ~/.config/powershell/Microsoft.Powershell_profile.ps1
+    - `$PROFILE.CurrentUserCurrentHost`
+    - Windows - $HOME\Documents\PowerShell\Microsoft.PowerShell_profile.ps1 `$PROFILE`
+    - Linux - ~/.config/powershell/Microsoft.Powershell_profile.ps1
+    - macOS - ~/.config/powershell/Microsoft.Powershell_profile.ps1
 
 ```ps1
  Test-Path -Path $PROFILE.AllUsersAllHosts
@@ -217,21 +214,22 @@
 ## `Get-Command`
 
 ## `Set-ExcutionPolicy -ExcutionPolicy <Policy Name>`
- - AllSigned
- - Bypass
- - Default
- - RemoteSigned
- - Restricted
- - Undefined
- - Unrestricted
+
+- AllSigned
+- Bypass
+- Default
+- RemoteSigned
+- Restricted
+- Undefined
+- Unrestricted
 
 ## Trusted Repository In PowerShell
 
 ```ps1
-  
+
  Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
   Unregister-PSRepository -Name "PSGallery"
- 
+
  # 확인
  Get-PSRepository
 ```
@@ -256,7 +254,6 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
  Set-PSReadLineKeyHandler -Chord "Ctrl+f" -Function ForwardWord
  Set-PSReadLineKeyHandler -Chord "RightArrow" -Function ForwardWord
 ```
-
 
 ---
 
@@ -307,6 +304,7 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
  # 환경변수 영구 저장 방법 3가지
  #-1. 프로필에 저장
  $PROFILE # 프로필 경로 가져오기
+
  #-2. SetEnvironmentVariable 메서드 사용
  [Environment]::SetEnvironmentVariable('Foo', 'Bar', 'Machine')
  [Environment]::SetEnvironmentVariable('Foo','', Machine)
@@ -352,31 +350,31 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 ---
 
 [ 등호 ]
--eq , -ieq , -ceq - 같음  
--ne , -ine , -cne - 같지 않음  
--gt , -igt , -cgt - 보다 큼  
--ge , -ige , -cge - 보다 크거나 같음  
--lt , -ilt , -clt - 보다 작음  
--le , -ile , -cle - 작거나 같음  
+-eq , -ieq , -ceq - 같음
+-ne , -ine , -cne - 같지 않음
+-gt , -igt , -cgt - 보다 큼
+-ge , -ige , -cge - 보다 크거나 같음
+-lt , -ilt , -clt - 보다 작음
+-le , -ile , -cle - 작거나 같음
 
-[ Matching ]  
--like , -ilike , -clike - 문자열이 와일드카드 패턴과 일치합니다.  
--notlike , -inotlike , -cnotlike - 문자열이 와일드카드 패턴과 일치하지 않음  
--match , -imatch , -cmatch - 문자열이 정규식 패턴과 일치합니다.  
--notmatch , -inotmatch , -cnotmatch - 문자열이 정규식 패턴과 일치하지 않음  
+[ Matching ]
+-like , -ilike , -clike - 문자열이 와일드카드 패턴과 일치합니다.
+-notlike , -inotlike , -cnotlike - 문자열이 와일드카드 패턴과 일치하지 않음
+-match , -imatch , -cmatch - 문자열이 정규식 패턴과 일치합니다.
+-notmatch , -inotmatch , -cnotmatch - 문자열이 정규식 패턴과 일치하지 않음
 
-[ 대체 ]  
--replace , -ireplace , -creplace - 정규식 패턴과 일치하는 문자열을 대체합니다.  
+[ 대체 ]
+-replace , -ireplace , -creplace - 정규식 패턴과 일치하는 문자열을 대체합니다.
 
-[ Containment ]  
--contains , -icontains , -ccontains - 컬렉션에 값이 포함됩니다.  
--notcontains , -inotcontains , -cnotcontains - 컬렉션에 값이 없습니다.  
--in - 컬렉션에 값이 있습니다.  
--notin - 컬렉션에 값이 없습니다.  
+[ Containment ]
+-contains , -icontains , -ccontains - 컬렉션에 값이 포함됩니다.
+-notcontains , -inotcontains , -cnotcontains - 컬렉션에 값이 없습니다.
+-in - 컬렉션에 값이 있습니다.
+-notin - 컬렉션에 값이 없습니다.
 
 [ 타입비교 ]
--is - 두 개체 모두 동일한 형식입니다.  
--isnot - 개체가 동일한 형식이 아닙니다.  
+-is - 두 개체 모두 동일한 형식입니다.
+-isnot - 개체가 동일한 형식이 아닙니다.
 
 ---
 
@@ -402,18 +400,18 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 
 ## CIM (Common Information Model)
 
- - `Get-Command -Module CimCmdlets`
- - WMI에 엑세스 하는 용도
- - `Get-CimInstance -Query 'Select * from Win32_BIOS'`
- - `Get-CimInstance -ClassName Win32_BIOS`
- - `Get-CimInstance -ClassName Win32_BIOS | Select-Object -Property SerialNumber`
- - `Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber | Select-Object -Property SerialNumber`
- - `(Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber).SerialNumber`
- - `$CimSession = New-CimSession -ComputerName Viv -Credential (Get-Credential)`
-     - `Get-CimInstance -CimSession $CimSession -ClassName Win32_BIOS`
- - Get-Service -Name WinRM | Start-Service
-     - Test-WSMan -ComputerName ViV
-   - `Get-CimSession` : CimSessions 가 현재 연결되어 있는 대상과 사용중인 프로토콜을 확인하는 용도로 사용
+- `Get-Command -Module CimCmdlets`
+- WMI에 엑세스
+- `Get-CimInstance -Query 'Select * from Win32_BIOS'`
+- `Get-CimInstance -ClassName Win32_BIOS`
+- `Get-CimInstance -ClassName Win32_BIOS | Select-Object -Property SerialNumber`
+- `Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber | Select-Object -Property SerialNumber`
+- `(Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber).SerialNumber`
+- `$CimSession = New-CimSession -ComputerName Viv -Credential (Get-Credential)`
+    - `Get-CimInstance -CimSession $CimSession -ClassName Win32_BIOS`
+- Get-Service -Name WinRM | Start-Service
+    - Test-WSMan -ComputerName ViV
+    - `Get-CimSession` : CimSessions 가 현재 연결되어 있는 대상과 사용중인 프로토콜을 확인하는 용도로 사용
 
 ```ps1
  $DCOM = New-CimSessionOption -Protocol Dcom
@@ -447,9 +445,7 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 - `CmdletBinding` 추가
 - 공통매개 변수 자동포함 : Verbose, Debug
 
-
 ## 동사 (Verb)
-
 
 ## Alias
 
@@ -464,7 +460,6 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 | cmd.exe | UNIX | PowerShell Cmdlet | PowerShell Alias |
 | --- | --- | --- | ---|
 | cd, chdir | cd | Set-Location | sl, cd, chdir |
-
 
 ## 키바인딩
 
@@ -547,7 +542,7 @@ Get-Process | Where-Object CPU -gt 2 | Sort-Object CPU -Descending | Select-Obje
 ```ps1
 dir -rec
 
-Get-AppxPackage -AllUsers | where-object {$_.PackageFullName -eq ""} |  Remove-AppxPackage -AllUsers  
+Get-AppxPackage -AllUsers | where-object {$_.PackageFullName -eq ""} |  Remove-AppxPackage -AllUsers
 Remove-Item: Access to the path 'C:\Program Files\WindowsApps\' is denied.
 cd "C:\Program Files\windowsapps"
 takeown /F Microsoft.Minecraft* /r /d y
@@ -559,12 +554,12 @@ takeown /F Microsoft.Minecraft* /r /d y
 ```
 
 ## VSCode Start with Changed Extensions
-`"C:\Users\Viv\AppData\Local\Programs\Microsoft VS Code\Code.exe" --extensions-dir="E:\Microsoft VS Code\extensions"`
 
+`"C:\Users\Viv\AppData\Local\Programs\Microsoft VS Code\Code.exe" --extensions-dir="E:\Microsoft VS Code\extensions"`
 
 ```ps1
  # 윈도우 시스템 확인
- systeminfo 
+ systeminfo
  Get-WmiObject -Class win32_OperatingSystem | % Caption
  wmic os get osarchitecture
  wmic cpu get datawidth
@@ -580,15 +575,23 @@ takeown /F Microsoft.Minecraft* /r /d y
 ## 오류 처리 전역변수
 
 - `$ErrorActionPreference`
-  - Continue : 기본값
-  - SilentlyContinue : 오류 메시지를 표시하지 않고 계속 실행
-  - Inquire : 수행할 작업을 묻는 프롬프트 표시
-  - Stop : 오류를 종료 처리하고 실행 중지, 오류 트래핑
+    - Continue : 기본값
+    - SilentlyContinue : 오류 메시지를 표시하지 않고 계속 실행
+    - Inquire : 수행할 작업을 묻는 프롬프트 표시
+    - Stop : 오류를 종료 처리하고 실행 중지, 오류 트래핑
 
 ## 점소싱
 
-- 다른 스크립트를 현재 범위로 가져오는 방법) :`. C:\Scripts\functions.ps1`
+- 다른 스크립트를 현재 범위로 가져오는 방법 :`. C:\Scripts\functions.ps1`
 
 ```ps1
+
+  # Windows 업데이트를 관리하는 PowerShell 모듈
   Install-Module -Name PSWindowsUpdate
+
+  # 업데이트 확인
+  Get-WindowsUpdate
+
+  # 모든 업데이트 설치
+  Install-WindowsUpdate -AcceptAll -AutoReboot
 ```

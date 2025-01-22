@@ -1,19 +1,19 @@
 # Alias
 
 - `?` -> Where-Object
-  - `Get-Process | Where-Object { $_.ProcessName -Match "^p.*" }`
+    - `Get-Process | Where-Object { $_.ProcessName -Match "^p.*" }`
 - `%` -> ForEach-Object
-  - `Get-Process | Foreach-Object {$_.ProcessName}`
-  - `Get-ChildItem $PSHOME | ForEach-Object -Process {if (!$_.PSIsContainer) {$_.Name; $_.Length / 1024; " " }}`
-  - 30000, 2345, 443221 | ForEach-Object -Process {$_/1024}
+    - `Get-Process | Foreach-Object {$_.ProcessName}`
+    - `Get-ChildItem $PSHOME | ForEach-Object -Process {if (!$_.PSIsContainer) {$_.Name; $_.Length / 1024; " " }}`
+    - 30000, 2345, 443221 | ForEach-Object -Process {$_/1024}
 - `ac` -> Add-Content
-  - `Add-Content -Path .\contents.txt -Value (Get-Date) -PassThru`, `Get-Content -Path .\contents.txt`
+    - `Add-Content -Path .\contents.txt -Value (Get-Date) -PassThru`, `Get-Content -Path .\contents.txt`
 - `cat` -> Get-Content
-  - `Get-Content -Path .\contents.txt | Add-Content -Path .\CopyToContent.txt`
+    - `Get-Content -Path .\contents.txt | Add-Content -Path .\CopyToContent.txt`
 - `cd` -> Set-Location
-  - `Set-Location -Path (Split-Path $PROFILE)`
+    - `Set-Location -Path (Split-Path $PROFILE)`
 - `chdir` -> Set-Location
-  - `Set-Location -Path "$Env:SystemRoot"`
+    - `Set-Location -Path "$Env:SystemRoot"`
 - clc -> Clear-Content
 - `clear` -> Clear-Host
 - clhy -> Clear-History
@@ -145,7 +145,7 @@
 - spps -> Stop-Process
 - spsv -> Stop-Service
 - start -> Start-Process
-- stz -> Set-TimeZone  
+- stz -> Set-TimeZone
 - sv -> Set-Variable
 - tee -> Tee-Object
 - type -> Get-Content

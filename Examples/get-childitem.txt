@@ -1,0 +1,253 @@
+NAME
+    Get-ChildItem
+    
+SYNOPSIS
+    Gets the items and child items in one or more specified locations.
+    
+    
+    --- Example 1: Get child items from a file system directory ---
+    
+    Get-ChildItem -Path C:\Test
+    
+    Directory: C:\Test
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    d-----        2/15/2019     08:29                Logs
+    -a----        2/13/2019     08:55             26 anotherfile.txt
+    -a----        2/12/2019     15:40         118014 Command.txt
+    -a----         2/1/2019     08:43            183 CreateTestFile.ps1
+    -ar---        2/12/2019     14:31             27 ReadOnlyFile.txt
+    
+    By default `Get-ChildItem` lists the mode ( Attributes ), LastWriteTime , file size ( Length ), and the Name of the item. The letters in the Mode property can be interpreted as follows:
+    
+    - `l` (link)
+    
+    - `d` (directory)
+    
+    - `a` (archive)
+    
+    - `r` (read-only)
+    
+    - `h` (hidden)
+    
+    - `s` (system)
+    
+    
+    For more information about the mode flags, see about_Filesystem_Provider (../microsoft.powershell.core/about/about_filesystem_provider.md#attributes-flagsexpression).
+    
+    -------- Example 2: Get child item names in a directory --------
+    
+    Get-ChildItem -Path C:\Test -Name
+    
+    Logs
+    anotherfile.txt
+    Command.txt
+    CreateTestFile.ps1
+    ReadOnlyFile.txt
+    
+    
+    Example 3: Get child items in the current directory and subdirectories
+    
+    Get-ChildItem -Path C:\Test\*.txt -Recurse -Force
+    
+    Directory: C:\Test\Logs\Adirectory
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    -a----        2/12/2019     16:16             20 Afile4.txt
+    -a-h--        2/12/2019     15:52             22 hiddenfile.txt
+    -a----        2/13/2019     13:26             20 LogFile4.txt
+    
+        Directory: C:\Test\Logs\Backup
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    -a----        2/12/2019     16:16             20 ATextFile.txt
+    -a----        2/12/2019     15:50             20 LogFile3.txt
+    
+        Directory: C:\Test\Logs
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    -a----        2/12/2019     16:16             20 Afile.txt
+    -a-h--        2/12/2019     15:52             22 hiddenfile.txt
+    -a----        2/13/2019     13:26             20 LogFile1.txt
+    
+        Directory: C:\Test
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    -a----        2/13/2019     08:55             26 anotherfile.txt
+    -a----        2/12/2019     15:40         118014 Command.txt
+    -a-h--        2/12/2019     15:52             22 hiddenfile.txt
+    -ar---        2/12/2019     14:31             27 ReadOnlyFile.txt
+    
+    The `Get-ChildItem` cmdlet uses the Path parameter to specify `C:\Test\ .txt`. Path * uses the asterisk (` `) wildcard to specify all files with the filename extension `.txt`. The Recurse * parameter searches the Path directory its subdirectories, as shown in the Directory: headings. The Force parameter displays hidden files such as `hiddenfile.txt` that have a mode of h .
+    ---- Example 4: Get child items using the Include parameter ----
+    
+    # When using the -Include parameter, if you don't include an asterisk in the path
+    # the command returns no output.
+    Get-ChildItem -Path C:\Test\ -Include *.txt
+    
+    
+    
+    Get-ChildItem -Path C:\Test\* -Include *.txt
+    
+    Directory: C:\Test
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    -a----        2/13/2019     08:55             26 anotherfile.txt
+    -a----        2/12/2019     15:40         118014 Command.txt
+    -ar---        2/12/2019     14:31             27 ReadOnlyFile.txt
+    
+    The `Get-ChildItem` cmdlet uses the Path parameter to specify the directory `C:\Test`. The Path parameter includes a trailing asterisk (`*`) wildcard to specify the directory's contents. The Include parameter uses an asterisk (`*`) wildcard to specify all files with the file name extension `.txt`.
+    
+    When the Include parameter is used, the Path parameter needs a trailing asterisk (`*`) wildcard to specify the directory's contents. For example, `-Path C:\Test*`.
+    
+    - If the Recurse parameter is added to the command, the trailing asterisk (` `) in the Path *   parameter is optional. The Recurse parameter gets items from the Path directory and its   subdirectories. For example, `-Path C:\Test\ -Recurse -Include *.txt` - If a trailing asterisk (` `) isn't included in the Path * parameter, the command doesn't return   any output and returns to the PowerShell prompt. For example, `-Path C:\Test`.
+    ---- Example 5: Get child items using the Exclude parameter ----
+    
+    Get-ChildItem -Path C:\Test\Logs
+    
+    Directory: C:\Test\Logs
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    d-----        2/15/2019     13:21                Adirectory
+    d-----        2/15/2019     08:28                AnEmptyDirectory
+    d-----        2/15/2019     13:21                Backup
+    -a----        2/12/2019     16:16             20 Afile.txt
+    -a----        2/13/2019     13:26             20 LogFile1.txt
+    -a----        2/12/2019     16:24             23 systemlog1.log
+    
+    Get-ChildItem -Path C:\Test\Logs\* -Exclude A*
+    
+    Directory: C:\Test\Logs
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    d-----        2/15/2019     13:21                Backup
+    -a----        2/13/2019     13:26             20 LogFile1.txt
+    -a----        2/12/2019     16:24             23 systemlog1.log
+    
+    The `Get-ChildItem` cmdlet uses the Path parameter to specify the directory `C:\Test\Logs`. The Exclude parameter uses the asterisk (`*`) wildcard to specify any files or directories that begin with `A` or `a` are excluded from the output.
+    
+    When the Exclude parameter is used, a trailing asterisk (` `) in the Path * parameter is optional. For example, `-Path C:\Test\Logs` or `-Path C:\Test\Logs*`.
+    
+    - If a trailing asterisk (` `) isn't included in the Path * parameter, the contents of the Path parameter are displayed. The exceptions are filenames or subdirectory names that match   the Exclude parameter's value. - If a trailing asterisk (` `) is included in the Path * parameter, the command recurses into the Path parameter's subdirectories. The exceptions are filenames or subdirectory names that match   the Exclude parameter's value. - If the Recurse parameter is added to the command, the recursion output is the same whether or   not the Path parameter includes a trailing asterisk (`*`).
+    ---- Example 6: Get the registry keys from a registry hive ----
+    
+    Get-ChildItem -Path HKLM:\HARDWARE
+    
+    Hive: HKEY_LOCAL_MACHINE\HARDWARE
+    
+    Name             Property
+    ----             --------
+    ACPI
+    DESCRIPTION
+    DEVICEMAP
+    RESOURCEMAP
+    UEFI
+    
+    Get-ChildItem -Path HKLM:\HARDWARE -Exclude D*
+    
+    Hive: HKEY_LOCAL_MACHINE\HARDWARE
+    
+    Name                           Property
+    ----                           --------
+    ACPI
+    RESOURCEMAP
+    
+    The first command shows the contents of the `HKLM:\HARDWARE` registry key. The Exclude parameter tells `Get-ChildItem` not to return any subkeys that start with `D `. Currently, the Exclude * parameter only works on subkeys, not item properties.
+    - Example 7: Get all certificates with code-signing authority -
+    
+    Get-ChildItem -Path Cert:\* -Recurse -CodeSigningCert
+    
+    For more information about the Certificate provider and the `Cert:` drive, see about_Certificate_Provider (../Microsoft.PowerShell.Security/About/about_Certificate_Provider.md).
+    -------- Example 8: Get items using the Depth parameter --------
+    
+    Get-ChildItem -Path C:\Parent -Depth 2
+    
+    Directory: C:\Parent
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    d-----        2/14/2019     10:24                SubDir_Level1
+    -a----        2/13/2019     08:55             26 file.txt
+    
+        Directory: C:\Parent\SubDir_Level1
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    d-----        2/14/2019     10:24                SubDir_Level2
+    -a----        2/13/2019     08:55             26 file.txt
+    
+        Directory: C:\Parent\SubDir_Level1\SubDir_Level2
+    
+    Mode                LastWriteTime         Length Name
+    ----                -------------         ------ ----
+    d-----        2/14/2019     10:22                SubDir_Level3
+    -a----        2/13/2019     08:55             26 file.txt
+    
+    The `Get-ChildItem` cmdlet uses the Path parameter to specify `C:\Parent`. The Depth parameter specifies two levels of recursion. `Get-ChildItem` displays the contents of the directory specified by the Path parameter and the two levels of subdirectories.
+    ----------- Example 9: Getting hard link information -----------
+    
+    Get-ChildItem -Path C:\PathContainingHardLink | Format-Table -View childrenWithHardLink
+    
+    
+    ----- Example 10: Output for Non-Windows Operating Systems -----
+    
+    PS> Get-ChildItem /etc/r*
+    
+    Directory: /etc
+    
+    UnixMode   User Group    LastWriteTime Size Name
+    --------   ---- -----    ------------- ---- ----
+    drwxr-xr-x root wheel  9/30/2019 19:19  128 racoon
+    -rw-r--r-- root wheel  9/26/2019 18:20 1560 rc.common
+    -rw-r--r-- root wheel  7/31/2017 17:30 1560 rc.common~previous
+    -rw-r--r-- root wheel  9/27/2019 20:34 5264 rc.netboot
+    lrwxr-xr-x root wheel  11/8/2019 15:35   22 resolv.conf -> /private/var/run/resolv.conf
+    -rw-r--r-- root wheel 10/23/2019 17:41    0 rmtab
+    -rw-r--r-- root wheel 10/23/2019 17:41 1735 rpc
+    -rw-r--r-- root wheel  7/25/2017 18:37 1735 rpc~previous
+    -rw-r--r-- root wheel 10/23/2019 18:42  891 rtadvd.conf
+    -rw-r--r-- root wheel  8/24/2017 21:54  891 rtadvd.conf~previous
+    
+    The new properties that are now part of the output are:
+    
+    - UnixMode is the file permissions as represented on a Unix system - User is the file owner - Group is the group owner - Size is the size of the file or directory as represented on a Unix system
+    
+    > [!NOTE] > This feature was moved from experimental to mainstream in PowerShell 7.1.
+    ----- Example 11: Get the link target for a junction point -----
+    
+    PS D:\> New-Item -ItemType Junction -Name tmp -Target $env:TEMP
+    PS D:\> Get-ChildItem | Select-Object name,LinkTarget
+    
+    Name     LinkTarget
+    ----     ----------
+    tmp      C:\Users\user1\AppData\Local\Temp
+    
+    PS D:\> Get-ChildItem
+    
+        Directory: D:\
+    
+    Mode          LastWriteTime    Length Name
+    ----          -------------    ------ ----
+    l----   12/16/2021  9:29 AM           tmp -> C:\Users\user1\AppData\Local\Temp
+    
+    
+    -- Example 12: Get the link target for an AppX reparse point --
+    
+    Get-ChildItem ~\AppData\Local\Microsoft\WindowsApps\MicrosoftEdge.exe |
+        Select-Object Mode, LinkTarget, LinkType, Name
+    
+    Mode  LinkTarget LinkType Name
+    ----  ---------- -------- ----
+    la---                     MicrosoftEdge.exe
+    
+    At this time, Windows doesn't provide a way to get the target information for an AppX reparse point. The LinkTarget and LinkType properties of the filesystem object are empty.
+
+
