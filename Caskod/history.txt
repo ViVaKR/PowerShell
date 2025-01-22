@@ -1,0 +1,31 @@
+
+  Id     Duration CommandLine
+  --     -------- -----------
+   1        0.641 ls
+   2        0.069 clear
+   3        0.008 gog
+   4        0.045 ls
+   5        0.123 ls ~/
+   6        0.058 cp C:\Users\bm\backup-db.ps1 .\
+   7        0.050 ls
+   8        0.049 cat .\backup-db.ps1
+   9     1:06.159 vim .\backup-db.ps1
+  10        0.813 .\backup-db.ps1 -db Movies
+  11        0.023 clear
+  12        0.041 ls
+  13        0.033 cd .\PowerShell\
+  14        0.007 clear
+  15        0.467 ls
+  16        0.171 git statue
+  17        0.133 git status
+  18        9.156 git pull
+  19        0.020 clear
+  20        0.034 echo $PROFILE
+  21       11.337 get-help about* | measure-object
+  22        0.092 ls
+  23        0.129 mkdir Caskod
+  24        0.037 cd .\Caskod\
+  25        0.007 clear
+  26        0.111 history
+  27        0.372 histoyr | Out-File history.txt
+
