@@ -1,4 +1,4 @@
-# 배열
+Add-History# 배열
 
 #! @() 으로 만들기
 $data = @('Zero', 'One', 'Two', 'Three')
@@ -40,13 +40,13 @@ Write-Output "---"
 ## 배열 반복 : $PSItem, $_
 
 Write-Output '---'
-$a.ForEach{"- [$PSItem]"}
+$a.ForEach{ "- [$PSItem]" }
 Write-Output '---'
 foreach ($item in $a) {
 	$item * 1.3
 }
 Write-Output '---'
-$a | ForEach-Object {$_/1024}
+$a | ForEach-Object { $_ / 1024 }
 
 # For Loop
 Write-Output 'For Loop'
