@@ -1,0 +1,11 @@
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/bin/Debug/netstandard2.0/VivModule.deps.json
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/bin/Debug/netstandard2.0/VivModule.dll
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/bin/Debug/netstandard2.0/VivModule.pdb
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/obj/Debug/netstandard2.0/VivModule.csproj.AssemblyReference.cache
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/obj/Debug/netstandard2.0/VivModule.GeneratedMSBuildEditorConfig.editorconfig
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/obj/Debug/netstandard2.0/VivModule.AssemblyInfoInputs.cache
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/obj/Debug/netstandard2.0/VivModule.AssemblyInfo.cs
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/obj/Debug/netstandard2.0/VivModule.csproj.CoreCompileInputs.cache
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/obj/Debug/netstandard2.0/VivModule.sourcelink.json
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/obj/Debug/netstandard2.0/VivModule.dll
+/Users/vivakr/GitWorkspace/PowerShell/VivModule/obj/Debug/netstandard2.0/VivModule.pdb
