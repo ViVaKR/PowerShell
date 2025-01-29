@@ -594,4 +594,5 @@ takeown /F Microsoft.Minecraft* /r /d y
 
   # 모든 업데이트 설치
   Install-WindowsUpdate -AcceptAll -AutoReboot
+  $running, $stopped = (Get-Service -ErrorAction SilentlyContinue).Where({$_.Status -eq 'Running'},'Split')
 ```
