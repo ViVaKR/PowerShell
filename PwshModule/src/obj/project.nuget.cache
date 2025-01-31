@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "B9lBGW1ZSIk=",
+  "success": true,
+  "projectFilePath": "C:\\GitWorkspace\\Temp\\PwshModule\\src\\PwshModule.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bm\\.nuget\\packages\\powershellstandard.library\\5.1.1\\powershellstandard.library.5.1.1.nupkg.sha512"
+  ],
+  "logs": []
+}
