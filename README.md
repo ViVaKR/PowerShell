@@ -596,3 +596,14 @@ takeown /F Microsoft.Minecraft* /r /d y
   Install-WindowsUpdate -AcceptAll -AutoReboot
   $running, $stopped = (Get-Service -ErrorAction SilentlyContinue).Where({$_.Status -eq 'Running'},'Split')
 ```
+
+```bash
+Get-ChildItem | Measure-Object -Property length -Minimun -Maximum -Sum -Average
+
+files = Get-ChildItem -Path $PSHOME -Recurse
+$files | Group-Object -Property Extension -NoElement | Sort-Object -Property Count -descending
+
+files = Get-ChildItem -Path $PSHOME -Recurse
+[hashtable]$newhash = [ordered]@{ Id = 1; Shape = "Square"; Color = "Blue"; }
+
+```
