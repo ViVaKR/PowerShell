@@ -1,0 +1,57 @@
+syntax on
+set nocompatible
+set ai
+filetype off
+filetype plugin on
+filetype indent on
+set mouse=a
+set number
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set novisualbell
+set noerrorbells
+set belloff=all
+set noswapfile
+set nowritebackup
+set enc=utf-8
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+set autoindent
+set nowrap
+set textwidth=80
+set wrap
+set shiftwidth=4
+set softtabstop=4
+set noshiftround
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmatch
+set noimd
+set history=1000
+
+let mapleader = "\\"
+
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+if has('termguicolors')
+    let &t_ti .= "\e[6 q" " 시작 시 I-빔 커서
+    let &t_te .= "\e[2 q" " 종료 시 기본 블록 커서
+endif
+
+inoremap jj <esc>
+inoremap fj <right>
+set showmode
+set showcmd
+set wildmenu
+set wildmode=list:longest
+set cindent
+set smartindent
+set copyindent
+set history=1000
+set nobackup
+set background=dark
+

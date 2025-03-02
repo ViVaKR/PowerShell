@@ -607,3 +607,12 @@ files = Get-ChildItem -Path $PSHOME -Recurse
 [hashtable]$newhash = [ordered]@{ Id = 1; Shape = "Square"; Color = "Blue"; }
 
 ```
+
+## 비트연산자
+
+- AND(-band)
+- OR(-bor)
+- XOR(-bxor)
+- NOT(-bnot)
+- Shift Left(-shl)
+- Shift Right(-shr)
