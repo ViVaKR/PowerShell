@@ -1,7 +1,10 @@
+# ETC
+
 Split-Path .\tmp.txt -LeafBase
 Split-Path ${PWD}\tmp.txt -NoQualifier
 Split-Path ${PWD}\tmp.txt -Extension
 Convert-Path HKLM:\Software\Microsoft\
+
 Get-Item .git -Force
 "C:\Win*" "System*" -Resolve
 ls SQLSERVER:\SQL\VIV\DEFAULT\Databases\ViVa\Tables\

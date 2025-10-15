@@ -1,1 +1,1 @@
-gin -Property "*version"
+Get-ComputerInfo -Property "*version"

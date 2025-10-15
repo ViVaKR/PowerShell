@@ -110,7 +110,7 @@ function Get-ProcessMember () {
 }
 
 
-#! Alias `ll`
+# Alias `ll`
 function ll {
     param (
         $arg
@@ -214,7 +214,7 @@ winget.exe --info
 winget.exe export package.json
 winget.exe list -n 9
 
-# [ source ]리리
+# [ source ]
 # msstore : Microsoft Store 카탈로그
 # winget : 윈도우 패키지 관리자 앱 리포지토리
 
