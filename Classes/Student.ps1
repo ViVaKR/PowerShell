@@ -1,4 +1,4 @@
-class student {
+class Student {
     [string]$Name
     [int]$Age
 
@@ -8,7 +8,6 @@ class student {
     }
 
     [string] GetStudent() {
-
         return "$($this.name) is $($this.age) years old"
     }
 
@@ -17,3 +16,18 @@ class student {
         $this.age = $age
     }
 }
+
+function main {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [string]$Name,
+        [Parameter(Mandatory)]
+        [int]$Age
+    )
+    $std = [Student]::new($Name, $Age)
+    $std.GetStudent()
+}
+
+
+

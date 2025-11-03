@@ -1,4 +1,0 @@
-  78        0.072 Get-Content -Path .\READEME.Etc.md | Add-Content -Path .\README.Etc.md
-  78        0.072 Get-Content -Path .\READEME.Etc.md | Add-Content -Path .\README.Etc.md
-helloworld
-hi
