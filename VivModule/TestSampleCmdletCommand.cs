@@ -1,10 +1,8 @@
-﻿using System;
-using System.Management.Automation;
-using System.Management.Automation.Runspaces;
+﻿using System.Management.Automation;
 
 namespace VivModule
 {
-    [Cmdlet(VerbsDiagnostic.Test,"SampleCmdlet")]
+    [Cmdlet(VerbsDiagnostic.Test, "SampleCmdlet")]
     [OutputType(typeof(FavoriteStuff))]
     public class TestSampleCmdletCommand : PSCmdlet
     {
@@ -30,7 +28,8 @@ namespace VivModule
         // This method will be called for each input received from the pipeline to this cmdlet; if no input is received, this method is not called
         protected override void ProcessRecord()
         {
-            WriteObject(new FavoriteStuff { 
+            WriteObject(new FavoriteStuff
+            {
                 FavoriteNumber = FavoriteNumber,
                 FavoritePet = FavoritePet
             });

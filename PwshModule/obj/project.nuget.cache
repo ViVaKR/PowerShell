@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "G7dmemV6aas=",
+  "dgSpecHash": "nxhJdHVZL7M=",
   "success": true,
   "projectFilePath": "/Users/viv/GitWorkspace/PowerShell/PwshModule/PwshModule.csproj",
   "expectedPackageFiles": [
@@ -100,7 +100,9 @@
     "/Users/viv/.nuget/packages/system.text.encodings.web/9.0.10/system.text.encodings.web.9.0.10.nupkg.sha512",
     "/Users/viv/.nuget/packages/system.threading.accesscontrol/9.0.10/system.threading.accesscontrol.9.0.10.nupkg.sha512",
     "/Users/viv/.nuget/packages/system.web.services.description/8.0.0/system.web.services.description.8.0.0.nupkg.sha512",
-    "/Users/viv/.nuget/packages/system.windows.extensions/9.0.10/system.windows.extensions.9.0.10.nupkg.sha512"
+    "/Users/viv/.nuget/packages/system.windows.extensions/9.0.10/system.windows.extensions.9.0.10.nupkg.sha512",
+    "/Users/viv/.nuget/packages/microsoft.netcore.app.ref/9.0.17/microsoft.netcore.app.ref.9.0.17.nupkg.sha512",
+    "/Users/viv/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.17/microsoft.aspnetcore.app.ref.9.0.17.nupkg.sha512"
   ],
   "logs": []
 }

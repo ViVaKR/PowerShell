@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "B9lBGW1ZSIk=",
+  "dgSpecHash": "6fYhHfIHbPk=",
   "success": true,
-  "projectFilePath": "C:\\GitWorkspace\\Temp\\PwshModule\\src\\PwshModule.csproj",
+  "projectFilePath": "/Users/viv/GitWorkspace/PowerShell/PwshModule/src/PwshModule.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\bm\\.nuget\\packages\\powershellstandard.library\\5.1.1\\powershellstandard.library.5.1.1.nupkg.sha512"
+    "/Users/viv/.nuget/packages/powershellstandard.library/5.1.1/powershellstandard.library.5.1.1.nupkg.sha512",
+    "/Users/viv/.nuget/packages/microsoft.netcore.app.ref/9.0.17/microsoft.netcore.app.ref.9.0.17.nupkg.sha512",
+    "/Users/viv/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.17/microsoft.aspnetcore.app.ref.9.0.17.nupkg.sha512"
   ],
   "logs": []
 }
