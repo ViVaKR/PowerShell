@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "6ul0km743hU=",
+  "dgSpecHash": "S0CDNVnooAU=",
   "success": true,
-  "projectFilePath": "/Users/viv/GitWorkspace/PowerShell/VivModule/VivModule.csproj",
+  "projectFilePath": "/Users/yeoji/GitWorkspace/PowerShell/VivModule/VivModule.csproj",
   "expectedPackageFiles": [
-    "/Users/viv/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "/Users/viv/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
-    "/Users/viv/.nuget/packages/powershellstandard.library/5.1.0-preview-06/powershellstandard.library.5.1.0-preview-06.nupkg.sha512"
+    "/Users/yeoji/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/yeoji/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/Users/yeoji/.nuget/packages/powershellstandard.library/5.1.0-preview-06/powershellstandard.library.5.1.0-preview-06.nupkg.sha512"
   ],
   "logs": []
 }

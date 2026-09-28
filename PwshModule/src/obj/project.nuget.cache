@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "6fYhHfIHbPk=",
+  "dgSpecHash": "Yp7U7bGXvig=",
   "success": true,
-  "projectFilePath": "/Users/viv/GitWorkspace/PowerShell/PwshModule/src/PwshModule.csproj",
+  "projectFilePath": "/Users/yeoji/GitWorkspace/PowerShell/PwshModule/src/PwshModule.csproj",
   "expectedPackageFiles": [
-    "/Users/viv/.nuget/packages/powershellstandard.library/5.1.1/powershellstandard.library.5.1.1.nupkg.sha512",
-    "/Users/viv/.nuget/packages/microsoft.netcore.app.ref/9.0.17/microsoft.netcore.app.ref.9.0.17.nupkg.sha512",
-    "/Users/viv/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.17/microsoft.aspnetcore.app.ref.9.0.17.nupkg.sha512"
+    "/Users/yeoji/.nuget/packages/powershellstandard.library/5.1.1/powershellstandard.library.5.1.1.nupkg.sha512",
+    "/Users/yeoji/.nuget/packages/microsoft.netcore.app.ref/9.0.20/microsoft.netcore.app.ref.9.0.20.nupkg.sha512",
+    "/Users/yeoji/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.20/microsoft.aspnetcore.app.ref.9.0.20.nupkg.sha512"
   ],
   "logs": []
 }

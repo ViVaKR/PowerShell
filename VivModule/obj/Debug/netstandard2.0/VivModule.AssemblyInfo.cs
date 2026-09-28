@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VivModule")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+039d438e70460857b30c50504d122bc365e7b80e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb3f9be7f94588f55ffbd8024894c65a08986243")]
 [assembly: System.Reflection.AssemblyProductAttribute("VivModule")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VivModule")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

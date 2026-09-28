@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/viv/GitWorkspace/PowerShell/VivModule/VivModule.csproj": {}
+    "/Users/yeoji/GitWorkspace/PowerShell/VivModule/VivModule.csproj": {}
   },
   "projects": {
-    "/Users/viv/GitWorkspace/PowerShell/VivModule/VivModule.csproj": {
+    "/Users/yeoji/GitWorkspace/PowerShell/VivModule/VivModule.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/viv/GitWorkspace/PowerShell/VivModule/VivModule.csproj",
+        "projectUniqueName": "/Users/yeoji/GitWorkspace/PowerShell/VivModule/VivModule.csproj",
         "projectName": "VivModule",
-        "projectPath": "/Users/viv/GitWorkspace/PowerShell/VivModule/VivModule.csproj",
-        "packagesPath": "/Users/viv/.nuget/packages/",
-        "outputPath": "/Users/viv/GitWorkspace/PowerShell/VivModule/obj/",
+        "projectPath": "/Users/yeoji/GitWorkspace/PowerShell/VivModule/VivModule.csproj",
+        "packagesPath": "/Users/yeoji/.nuget/packages/",
+        "outputPath": "/Users/yeoji/GitWorkspace/PowerShell/VivModule/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/viv/.nuget/NuGet/NuGet.Config"
+          "/Users/yeoji/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -39,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.400"
       },
       "frameworks": {
         "netstandard2.0": {
@@ -69,7 +69,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.301/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.401/RuntimeIdentifierGraph.json"
         }
       }
     }

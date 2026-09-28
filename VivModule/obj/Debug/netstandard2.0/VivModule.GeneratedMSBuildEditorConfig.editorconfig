@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = VivModule
-build_property.ProjectDir = /Users/viv/GitWorkspace/PowerShell/VivModule/
+build_property.ProjectDir = /Users/yeoji/GitWorkspace/PowerShell/VivModule/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false
