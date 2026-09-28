@@ -2,3 +2,4 @@
 PwshDotnet/.vscode/
 PwshDotnet/**/bin/
 PwshDotnet/**/obj/
+.DS_Store
