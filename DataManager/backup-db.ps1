@@ -1,11 +1,11 @@
 param (
-    [string]$db 
+    [string]$db
 )
 
 $server = "192.168.0.4,59273"
 $database = $db
 $username = "SA"
-$password = "B9037!m8947#"
+$password = "비밀번호"
 $Y = (Get-Date).ToString("yyyy")
 $M = (Get-Date).ToString("MM")
 $D = (Get-Date).ToString("dd")

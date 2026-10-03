@@ -1,9 +1,8 @@
-<#
-	New-ModuleManifest 
-	-Path `D:\Documents\PowerShell\Modules\VivModule\MyModule.psd1`
-	-RootModule VivModule 
-	-Author 'Kim Bum Jun' 
-	-Description 'VivModule' 
-	-CompanyName 'vivabm.com'
-#>
-New-ModuleManifest -Path 'D:\Documents\PowerShell\Modules\VivModule\VivModule.psd1' -RootModule VivModule -Author 'Kim Bum Jun' -Description 'VivModule' -CompanyName 'vivabm.com'
+$manifest = @{
+  Path              = "./$module/$module.psd1"
+  Author            = 'Kim Bum Jun'
+  NestedModules     = @('./$module/Output/$module.dll')
+  RootModule        = "$module.psm1"
+  FunctionsToExport = @('Resolve-MyCmdlet')
+}
+New-ModuleManifest @manifest

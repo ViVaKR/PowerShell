@@ -1,0 +1,13 @@
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/Output/Demo/Demo.deps.json
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/Output/Demo/Demo.dll
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/Output/Demo/Demo.pdb
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/Demo.csproj.AssemblyReference.cache
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/Demo.GeneratedMSBuildEditorConfig.editorconfig
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/Demo.AssemblyInfoInputs.cache
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/Demo.AssemblyInfo.cs
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/Demo.csproj.CoreCompileInputs.cache
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/Demo.sourcelink.json
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/Demo.dll
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/refint/Demo.dll
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/Demo.pdb
+/Users/yeoji/GitWorkspace/PowerShell/Modules/Demo/src/Demo/obj/Release/net10.0/ref/Demo.dll
