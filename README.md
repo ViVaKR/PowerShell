@@ -20,20 +20,22 @@
 ## 기존 명령줄 셸과의 차이점
 
 - 파워셸에서는 개체를 입력 및 출력으로 사용하므로 서식 지정 및 추출에 소요시간을 줄일 수 있음
+
 - *Cmdlet* (command let) : 컴파일된 명령
     - .NET, .NET Core 에서 개발되어 파워셸 내에서 명령을 호출함
     - 명명표준 : `동사-명사`  $\rightarrow$ `Get-Verb`
     - 별도의 실행 파일이 아닌 공용 런타임에 빌드되어 매개변수 구문 분석 및 파이프 라인 동작에서 일관된 환경을 제공함
     - 일반적으로 개체 입력을 받아들이고 개체를 반환함
     - NET Core 로 빌드되는 오픈소스로서, 유연하고 확장성이 탁월함
+
 - 다양한 유형의 명령
     - 네이티브 실행 파일
     - cmdlet
     - 함수
     - 스크립트 또는 별칭
 
-```ps1
- Get-Command -Verb Get -Noun a-noun*
+```powershell
+ Get-Command -Verb Get
 ```
 
 ## Cmdlet (Command-lets) : PowerShell 명령
@@ -55,7 +57,8 @@
 ```ps1
  Update-Help -UICulture en-US -Verbose
  Update-Help -UICulture ko-KR -Verbose
- Get-Help -Name Get-Help -Full # 전체 도움말 항목 (-Detailed, Examples, Online, Parameter Noun, ShowWindows)
+ Get-Help -Name Get-Help -Full
+ # 전체 도움말 항목 (Detailed, Examples, Online, Parameter Noun, ShowWindows)
  help Get-Command -Full | Out-GridView # 별도의 창에 도움말 표시 (권장)
  help *process*
 ```
@@ -76,8 +79,6 @@
 ```ps1
  # SqlServer
  Install-Module -Name SqlServer
-
-
  Get-Command -Name *service* -CommandType Cmdlet, Function, Alias
  Get-Help Get-FileHash -Examples
  help Get-FileHash -Examples
