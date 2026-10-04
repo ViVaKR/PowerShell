@@ -1,5 +1,4 @@
-﻿
-if ($freeSpace -le 5GB) {
+﻿if ($freeSpace -le 5GB) {
     Write-Host "Free disk space is less than 5 GB"
 }
 elseif ($freeSpace -le 10GB) {

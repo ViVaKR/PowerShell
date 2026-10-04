@@ -1,3 +1,2 @@
-﻿
-$cred = Import-Clixml -Path .\cred.xml
+﻿$cred = Import-Clixml -Path ./cred.xml
 $cred

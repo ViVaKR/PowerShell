@@ -1,5 +1,4 @@
-﻿
-$answer = Read-Host "How many days: "
+﻿$answer = Read-Host "How many days "
 $answer
 
 Write-Host "How old are you? " -NoNewline

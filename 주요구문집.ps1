@@ -1,3 +1,123 @@
+
+$genre = Get-Content Genres.json | ConvertFrom-Json
+$genre
+
+$users = Invoke-RestMethod "https://jsonplaceholder.typicode.com/todos"
+$user
+
+$cred = Import-Clixml -Path ./cred.xml
+$cred
+
+Get-Content -Path "$PWD/*" -Include "*.txt" -TotalCount
+
+$answer = Read-Host "How many days "
+$answer
+
+$number = 1
+while ($number -le 10) {
+  Write-Host "While Loop $number"
+  $number++
+}
+
+[System.Net.Dns]::GetHostAddresses("google.com") | Select-Object IPAddressToString
+# nc -zv google.com 443
+# dig google.com +short
+# nslookup google.com
+#
+# 현재 리슨(LISTEN) 중인 포트와 프로세스 확인 (가장 많이 씀)
+#lsof -iTCP -sTCP:LISTEN
+
+# 전통적인 네트워크 연결 상태 조회
+# netstat -an -p tcp
+
+# 맥 파워셸에서도 443 포트 연결 테스트가 됨!
+Test-Connection -TargetName google.com -TcpPort 443
+
+$profile = (Split-Path -Parent $Profile.CurrentUserAllHosts) # profile.ps1
+
+# Start-Job : 내 일을 대신해 줄 '그림자 분신술(비동기 백그라운드 일꾼)'
+# C# 의 **Task.Run(() => { ... }) 또는 백그라운드 스레드
+# 원래 10 + 10 = 20초 걸리던 작업니 두 코어가 동시에 작엉 10초 만에 끝내 버림
+
+# 1. Rust 빌드를 백그라운드 분신(Job)에게 시킴 (즉시 다음 줄로 넘어감!)
+$jobRust = Start-Job -ScriptBlock { cargo build --release ... }
+
+# 2. Go 빌드도 다른 분신에게 시킴 (동시에 병렬 실행!)
+$jobGo = Start-Job -ScriptBlock { go build ... }
+
+# 3. 메인 스크립트는 다른 일(어셈블리 파싱 등)을 하다가, 두 녀석이 다 끝날 때까지 대기!
+Wait-Job $jobRust, $jobGo
+
+# 4. 일꾼들이 작업한 결과(출력 로그)를 회수!
+$rustLog = Receive-Job $jobRust
+$goLog = Receive-Job $jobGo
+
+# 5. 일 다 끝난 분신들 퇴근(메모리 해제)
+Remove-Job $jobRust, $jobGo
+
+# 타임 아웃 걸기 - 5초 안에 안끝나면 목을 쳐라
+# 백그라운드로 실행
+$job = Start-Job -ScriptBlock { Invoke-RestMethod "https://느려터진서버.com/api" }
+
+# 딱 5초만 기다려줌! (C#의 CancellationTokenSource 같은 역할)
+if (-not (Wait-Job $job -Timeout 5)) {
+  Stop-Job $job
+  Write-Warning "⚠️ 5초 초과! 서버가 응답이 없어 작업을 강제 처단했습니다."
+}
+else {
+  $data = Receive-Job $job
+}
+Remove-Job $job
+
+# [Start-ThreadJob]
+# 100개의 작업을 동시에 병렬로 돌릴 때 (Thread 기반 초광속!)
+# C#의 ThreadPool처럼 0.001초 만에 스레드를 띄워 병렬 사격!
+1..100000 | ForEach-Object -Parallel {
+  Write-Host "사격 번호: $_ (스레드 ID: $([System.Threading.Thread]::CurrentThread.ManagedThreadId))"
+} -ThrottleLimit 10
+
+# ================================
+
+# 현재 단축키 현황 사용중 / 미 사용중
+Get-PSReadLineKeyHandler -Bound -Unbound
+
+# 👑 Start-Transcript 끝판왕 엔터프라이즈 템플릿
+# 1. 로그 전용 폴더 준비 (없으면 자동 생성)
+# 터미널 화면을 녹화하는 'CCTV 카메라'
+$logDir = Join-Path $PSScriptRoot "logs"
+if (-not (Test-Path $logDir)) { New-Item -ItemType Directory -Path $logDir -Force | Out-Null }
+
+# 2. 초 단위 타임스탬프가 박힌 고유 파일명 생성
+$timestamp = Get-Date -Format 'yyyyMMdd_HHmmss'
+$logPath = Join-Path $logDir "build_$timestamp.log"
+
+# 3. 끝판왕 옵션 장착 후 녹화 개시!
+Start-Transcript -Path $logPath -IncludeInvocationHeader -Append
+
+try {
+  # =================================================================
+  # ⚔️ [여기에 본래의 빌드 / 오케스트레이터 로직을 위치시킵니다] ⚔️
+  # =================================================================
+  Write-Host "▶ 작전 개시..." -ForegroundColor Green
+
+  # 예: cargo build, go build, ld 링킹 등등...
+  # 중간에 에러가 터져서 throw가 발생해도 괜찮습니다!
+
+  Write-Host "✔ 작전 성공!" -ForegroundColor Cyan
+}
+finally {
+  # 4. [가장 중요한 방패] 성공하든, 중간에 폭망하든 '무조건' 안전하게 녹화 종료!
+  Stop-Transcript
+  Write-Host "📋 작전 일지 보관 완료: $logPath" -ForegroundColor DarkGray
+}
+
+# 일반적인 형식
+Start-Transcript -Path "./pwsh_time_log" -IncludeInvocationHeader
+
+Stop-Transcript
+
+1..5 | ForEach-Object { $_ * 3 }
+
 $data = @(
   @{ Name = 'a'; Age = 15 },
   @{ Name = 'b'; Age = 27 },
@@ -10,9 +130,28 @@ Group-Object -Property Age |
 ForEach-Object {
   # C# 의 new { ... } 와 완전히 동일한 익명 객체 투영!
   [PSCustomObject]@{
-    Age = [int]$_.Name
-  }
+    Age      = [int]$_.Name
+    Count    = $_.Count
+    Names    = ($_.Group.Name -join ', ') # 그룹에 속한 이름들 묶기
+    TotalAge = ($_.Group.Age | Measure-Object -Sum).Sum # C# 의 .Sum(x=> x.Age)
+  } |
+  Sort-Object -Property Count -Descending
 }
+
+<#
+=================================================================================
+C# LINQ 메서드                        파워셸 (PowerShell) 대응 구문
+=================================================================================
+.Where(x => x.Age > 20)             Where-Object { $_.Age -gt 20 }
+.GroupBy(x => x.Age)                Group-Object -Property Age
+.Select(x => new { ... })           ForEach-Object { [PSCustomObject]@{ ... } }
+.OrderByDescending(x => x.Count)    Sort-Object -Property Count -Descending
+.Take(5)                            Select-Object -First 5
+.Skip(2)                            Select-Object -Skip 2
+.Sum(x => x.Age)                    ($_.Age | Measure-Object -Sum).Sum
+.Any() / .All()                     -contains 또는 조건문 결합
+=================================================================================
+#>
 
 
 Get-Process | Group-Object -Property ProcessName | Select-Object -Property Name, Count | Sort-Object -Property Count -Descending
