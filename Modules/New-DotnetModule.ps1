@@ -52,12 +52,17 @@ public class ${Module}Command : PSCmdlet
 
   New-ModuleManifest -Path (Join-Path $outDir "$Module.psd1") `
     -RootModule "$Module.dll" `
+    -ModuleVersion '0.1.0' `
     -Author 'Kim Bum Jun' `
     -Description "$Module 모듈" `
     -PowerShellVersion '7.0' `
     -CompatiblePSEditions 'Core' `
     -CmdletsToExport @($cmdlet) `
-    -FunctionsToExport @() -AliasesToExport @() -VariablesToExport @()
+    -FunctionsToExport @() -AliasesToExport @() -VariablesToExport @() `
+    -Tags @('binary-module', 'dotnet', 'powershell') `
+    -ProjectUri 'https://github.com/ViVaKR/PowerShell.ModuleForge' `
+    -LicenseUri 'https://github.com/ViVaKR/PowerShell.ModuleForge/blob/main/LICENSE' `
+    -ReleaseNotes '모듈작성기 프리뷰'
 
   Write-Host "모듈 $Module 작성 완료: $outDir" -ForegroundColor Green
 }

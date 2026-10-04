@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PwshModule")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4712cac6428dcc57efdc2771e00dfcc894919c4c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64ad0ce888e68bfdcdc2a6db1bbb99feb5d9073c")]
 [assembly: System.Reflection.AssemblyProductAttribute("PwshModule")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PwshModule")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
