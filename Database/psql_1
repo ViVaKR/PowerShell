@@ -1,0 +1,36 @@
+\l
+\l
+select 2 + 2;
+\h
+\l
+select * from codes;
+select * from categories;
+\d
+\d+
+\dy
+\di
+\dv
+\d+ \x
+\x
+select * from categories;
+\x
+select * from categories;
+\x
+\du
+\dn
+\df
+\l
+\du
+show hba_file;
+\q
+\l
+alter user postgress with password 'Ws3%Sy5#Ep1*Cq6!Ou2&';
+alter user postgres with password 'Ws3%Sy5#Ep1*Cq6!Ou2&';
+pg_dump vivabm > ~/Temp/vivabm_db_backup
+;
+pg_dump vivabm > backup_vivabm
+;
+pg_dump;
+\dt
+\s
+\s psql_1

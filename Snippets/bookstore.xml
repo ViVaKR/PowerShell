@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<Objs xmlns="http://schemas.microsoft.com/powershell/2004/04" Version="1.1.0.1">
+    <bookstore>
+        <book genre="장르 (가)" publicationdate="1981" ISBN="1-861003-11-0">
+            <title>C# 그가 왔다! (가)</title>
+            <author>
+                <first-name>Kim</first-name>
+                <last-name>Bum Jun</last-name>
+            </author>
+            <price>8.99</price>
+        </book>
+        <book genre="장르 (나)" publicationdate="1967" ISBN="0-201-63361-2">
+            <title>C# 넌 누구냐? (나)</title>
+            <author>
+                <first-name>장</first-name>
+                <last-name>길산</last-name>
+            </author>
+            <price>11.99</price>
+        </book>
+        <book genre="장르 (다)" publicationdate="1991" ISBN="1-861001-57-6">
+            <title>Hello, Great CSharp World (다)</title>
+            <author>
+                <name>임꺽정</name>
+            </author>
+            <price>9.99</price>
+        </book>
+    </bookstore>
+</Objs>

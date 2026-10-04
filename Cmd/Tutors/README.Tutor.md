@@ -1,0 +1,29 @@
+# Batch
+
+- VER
+- ASSOC
+- CD
+- CLS
+- COPY
+- DEL
+- DIR
+- DATE
+- ECHO : Display messages, or turns command echoing on or off
+- EXIT : Exit the DOS Console
+- MD : Create a new directory in the current location.
+- MOVE : Moves fiels or directories between direcotries.
+- PATH : Displays or sets the path variable.
+- PAUSE : Waits for a line of input to be entered.
+- PROMPT : Can be used to change or reset the cmd.exe prompt.
+- RD : Removes directories, but the directoies need to be empty before they can be removed.
+- REN : Renames files and directories.
+- REM : Renames fiels and directories.
+- START : Start a program in new windows, or opens a document.
+- TIME : Set or Displays the time.
+- TYPE : prints the content of a file of files to the output.
+- VOL : Display the volume labels
+- ATTRIB : Displays or sets the attributes of the files in the curent directory.
+- CHKDSK : Checks the disk for any problems.
+- CHOICE : Provides a list of options to the user.
+- CMD : Invokes another instance of command prompt.
+- COMP : Compares 2 files based on the file size.

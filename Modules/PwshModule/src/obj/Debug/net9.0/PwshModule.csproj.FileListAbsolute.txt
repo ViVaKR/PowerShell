@@ -1,0 +1,12 @@
+C:\GitWorkspace\Temp\PwshModule\src\bin\Debug\net9.0\PwshModule.deps.json
+C:\GitWorkspace\Temp\PwshModule\src\bin\Debug\net9.0\PwshModule.dll
+C:\GitWorkspace\Temp\PwshModule\src\bin\Debug\net9.0\PwshModule.pdb
+C:\GitWorkspace\Temp\PwshModule\src\obj\Debug\net9.0\PwshModule.csproj.AssemblyReference.cache
+C:\GitWorkspace\Temp\PwshModule\src\obj\Debug\net9.0\PwshModule.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitWorkspace\Temp\PwshModule\src\obj\Debug\net9.0\PwshModule.AssemblyInfoInputs.cache
+C:\GitWorkspace\Temp\PwshModule\src\obj\Debug\net9.0\PwshModule.AssemblyInfo.cs
+C:\GitWorkspace\Temp\PwshModule\src\obj\Debug\net9.0\PwshModule.csproj.CoreCompileInputs.cache
+C:\GitWorkspace\Temp\PwshModule\src\obj\Debug\net9.0\PwshModule.dll
+C:\GitWorkspace\Temp\PwshModule\src\obj\Debug\net9.0\refint\PwshModule.dll
+C:\GitWorkspace\Temp\PwshModule\src\obj\Debug\net9.0\PwshModule.pdb
+C:\GitWorkspace\Temp\PwshModule\src\obj\Debug\net9.0\ref\PwshModule.dll

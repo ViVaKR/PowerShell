@@ -1,0 +1,82 @@
+
+netsh -c int ip set address name="로컬 영역 연결" source=static addr=<ip> mask=255.255.255.0 gateway=192.168.0.1 gwmetric=0
+
+[윈도우즈 시스템 명령어] 
+
+net start : 실행중인 서비스 정보
+tasklist : 현재 실행중인 프로세스 정보
+tasklist /svs : 서비스와 프로세스 관계
+tasklist /m : 프로세스와 모둘관계
+tasklist /m ntdll.dll(모듈이름) : 이 모듈을 사용하는 모든 프로세스 정보
+tasklist /fi "imagename eq note*"
+taskkill /pid 1000 프로세스 강제 종료
+taskkill /im vmware.exe
+
+eventquery /r 20 /l security : 로그 출력
+net use : 네트워크 접속정보
+net user : 계정정보
+net view : 네트워크내 접속 컴퓨터 정보
+net share : 공유 폴더
+net session : 현재 컴퓨터에 접속하고 있는 컴퓨터 정보
+
+schtasks /query
+schtasks /query /fo list /v : fo 옵션은 출력형태, /v옵션은 고급옵션 표시
+time /t
+date /t
+
+attrib 파일 속성
+attrib +h 파일이름 : 파일에 히든 속성 설정
+attrib +s 파일이름 : 파일에 시스템 속성 설정
+attrib +r 파일이름 : 파일에 읽기 속성 설정
+
+copy report1.txt + report2.txt + report3.xt c:\report4 : 내용이 합해짐
+xcopy 디렉토리복사
+
+md
+mkdir
+rd
+rmdir /s(하위디렉토리 삭제)
+del
+erase
+
+move
+rename
+fc : 비교하는 명령어
+
+tree /f (파일이름출력)
+
+systeminfo
+
+shutdown /s /t 60 /f : 60후에 강제 종료
+shutdown /a : 종료방지
+
+shutdown /r /c "계획된종료" /d p:10:15
+
+arp -a
+arp -s 192.168.20.2 00-0d-65-cc-3e-c2
+
+finger
+
+getmac
+
+hostname
+
+netstat -an : 모두 출력
+netstat -np tcp : 리슨 제외하고 출력
+netstat -anp tcp : tcp만 출력
+netstat -anop tcp : pid 를 출력
+netstat -snp tcp : 통계 출력
+
+nbtstat -n : 로컬 컴퓨터의 netbios 이름출력
+nbtstat -c : netbios 이름 캐시, netbios이름, 그들의 해석된 ip주소의 내용을 보여준다.
+
+nbtstat -r : netbios 이름 변환 통계를 보여준다. 
+
+
+netsh>diag show all
+netsh>interface show interface
+netsh>firwall show opmode
+netsh>diag ping adapter
+netsh>diag show test
+
+

@@ -1,0 +1,98 @@
+[
+  {
+    "GenreID": 1,
+    "Genre": "Western"
+  },
+  {
+    "GenreID": 2,
+    "Genre": "Drama"
+  },
+  {
+    "GenreID": 3,
+    "Genre": "Science Fiction"
+  },
+  {
+    "GenreID": 4,
+    "Genre": "Action"
+  },
+  {
+    "GenreID": 5,
+    "Genre": "War"
+  },
+  {
+    "GenreID": 6,
+    "Genre": "Romance"
+  },
+  {
+    "GenreID": 7,
+    "Genre": "Comedy"
+  },
+  {
+    "GenreID": 8,
+    "Genre": "Adventure"
+  },
+  {
+    "GenreID": 9,
+    "Genre": "Thriller"
+  },
+  {
+    "GenreID": 10,
+    "Genre": "Horror"
+  },
+  {
+    "GenreID": 11,
+    "Genre": "Animation"
+  },
+  {
+    "GenreID": 12,
+    "Genre": "Fantasy"
+  },
+  {
+    "GenreID": 13,
+    "Genre": "History"
+  },
+  {
+    "GenreID": 14,
+    "Genre": "Crime"
+  },
+  {
+    "GenreID": 17,
+    "Genre": "Martial Arts"
+  },
+  {
+    "GenreID": 18,
+    "Genre": "Mystery"
+  },
+  {
+    "GenreID": 19,
+    "Genre": "Biography"
+  },
+  {
+    "GenreID": 20,
+    "Genre": "Musical"
+  },
+  {
+    "GenreID": 22,
+    "Genre": "Sport"
+  },
+  {
+    "GenreID": 24,
+    "Genre": "Documentary"
+  },
+  {
+    "GenreID": 25,
+    "Genre": "Disaster"
+  },
+  {
+    "GenreID": 26,
+    "Genre": "Family"
+  },
+  {
+    "GenreID": 27,
+    "Genre": "Romantic Comedy"
+  },
+  {
+    "GenreID": 28,
+    "Genre": "Awful"
+  }
+]
