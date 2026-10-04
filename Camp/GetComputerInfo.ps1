@@ -1,1 +1,0 @@
-Get-ComputerInfo -Property "*version"
