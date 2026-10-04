@@ -1,3 +1,28 @@
+$data = @(
+  @{ Name = 'a'; Age = 15 },
+  @{ Name = 'b'; Age = 27 },
+  @{ Name = 'c'; Age = 27 },
+  @{ Name = 'd'; Age = 45 },
+  @{ Name = 'e'; Age = 27 }
+)
+$result = $data |
+Group-Object -Property Age |
+ForEach-Object {
+  # C# 의 new { ... } 와 완전히 동일한 익명 객체 투영!
+  [PSCustomObject]@{
+    Age = [int]$_.Name
+  }
+}
+
+
+Get-Process | Group-Object -Property ProcessName | Select-Object -Property Name, Count | Sort-Object -Property Count -Descending
+
+Add-Content -Path "TextFile.txt" -Value "Hello, World!"
+New-Item -Path "TextFile.txt" -ItemType File -Force
+
+'a', 'b', 'c', 'd', 'a', 'a', 'b', 'e' | Select-Object -Unique
+
+Clear-Host
 
 # 1. Invoke-Item :기본 연결 프로그램으로 파일 즉시 열기 (가장 주된 목적)
 #              기본 웹 브라우저로 URL(웹사이트) 띄우기
