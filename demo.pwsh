@@ -1,0 +1,3 @@
+#!/usr/bin/env pwsh
+
+Write-Host "엣지 넘치은 스크립트 가동" -ForegroundColor Yellow
