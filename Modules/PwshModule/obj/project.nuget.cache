@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ro+APoiD22k=",
+  "dgSpecHash": "I2fKn7MYqjg=",
   "success": true,
   "projectFilePath": "/Users/yeoji/GitWorkspace/PowerShell/Modules/PwshModule/PwshModule.csproj",
   "expectedPackageFiles": [
@@ -101,8 +101,8 @@
     "/Users/yeoji/.nuget/packages/system.threading.accesscontrol/9.0.10/system.threading.accesscontrol.9.0.10.nupkg.sha512",
     "/Users/yeoji/.nuget/packages/system.web.services.description/8.0.0/system.web.services.description.8.0.0.nupkg.sha512",
     "/Users/yeoji/.nuget/packages/system.windows.extensions/9.0.10/system.windows.extensions.9.0.10.nupkg.sha512",
-    "/Users/yeoji/.nuget/packages/microsoft.netcore.app.ref/9.0.20/microsoft.netcore.app.ref.9.0.20.nupkg.sha512",
-    "/Users/yeoji/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.20/microsoft.aspnetcore.app.ref.9.0.20.nupkg.sha512"
+    "/Users/yeoji/.nuget/packages/microsoft.netcore.app.ref/9.0.21/microsoft.netcore.app.ref.9.0.21.nupkg.sha512",
+    "/Users/yeoji/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.21/microsoft.aspnetcore.app.ref.9.0.21.nupkg.sha512"
   ],
   "logs": []
 }
